@@ -11,7 +11,7 @@ class MY_Controller extends CI_Controller
 
 	public function template($data)
 	{
-	    return $this->load->view('includes/template', $data);
+	    return $this->load->view('admin/templates/template', $data);
 	}
 
 	public function POST($name)

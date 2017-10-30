@@ -33,7 +33,7 @@
     <!-- Custom Fonts -->
     <link href="<?= base_url('assets/sbadmin-2') ?>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link rel="icon" type="image/x-icon" href="<?= base_url('assets/img/logo.jpg') ?>">
+    <!-- <link rel="icon" type="image/x-icon" href="<?= base_url('assets/img/logo.jpg') ?>"> -->
 
     <!-- jQuery -->
     <script src="<?= base_url('assets/sbadmin-2') ?>/vendor/jquery/jquery.min.js"></script>

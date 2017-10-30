@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- <a class="navbar-brand" href="<?= base_url() ?>"><img style="margin-top: -14px; border-radius: 50%;" width="70" height="50" src="<?= base_url('assets/img/logo.jpg') ?>"></a> -->
-                <a class="navbar-brand" href="<?= base_url() ?>">Fuzzy</a>
+                <a class="navbar-brand" href="<?= base_url() ?>">SAW</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -31,17 +31,9 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li>
-                            <a href="<?= base_url('admin') ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url('admin/daftar_pelamar') ?>"><i class="fa fa-user fa-fw"></i> Daftar Pelamar</a>
-                        </li>
-
-                        <li>
-                            <a href="<?= base_url('admin/daftar_pelamar') ?>"><i class="fa fa-user fa-fw"></i> Ranking</a>
-                        </li>
-
+                        <li><a href="<?= base_url('admin/') ?>"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+                        <li><a href="<?= base_url('admin/hasil_uji_daun') ?>" class=""><i class="fa fa-bar-chart"></i> <span>Data Daun</span></a></li>
+                        <li><a href="<?= base_url('admin/data_tanah') ?>" class=""><i class="fa fa-book"></i> <span>Data Tanah</span></a></li></li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

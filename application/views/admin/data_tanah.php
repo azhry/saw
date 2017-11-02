@@ -6,11 +6,11 @@
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Data Tanah Lab FP Kecil <button class="btn btn-success" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i></button></h1>
+                            <h1 class="page-header">Data Tanah Lab FP Kecil <button class="btn btn-success" data-toggle="modal" data-target="#add"><i class="fa fa-plus"> </i></button></h1> 
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
-                    <!-- /.row -->
+
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="panel panel-default">
@@ -38,15 +38,11 @@
                                                 <th>Mg</th>
                                                 <th>KTK</th>
                                                 <th>Al-dd</th>
-                                                <!-- <th colspan="3">% Fraksi Tekstur</th> -->
                                                 <th rowspan="2"></th>
                                             </tr>
                                             <tr>
                                                 <th colspan="2">g/Kg</th>
                                                 <th colspan="6">g/Kg</th>
-                                                <!-- <th>Pasir</th>
-                                                <th>Debu</th>
-                                                <th>Liat</th> -->
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -89,6 +85,81 @@
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Data Tanah Lab FP Kecil
+                                </div>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    <style type="text/css">
+                                        tr th, tr td {text-align: center; padding: 1%;}
+                                    </style>
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2" style="width: 20px !important;">No</th>
+                                                <th rowspan="2">Kode Lab</th>
+                                                <th rowspan="2">Kode Sampel</th>
+                                                <th rowspan="2">pH h20 (1:1)</th>
+                                                <th>C-Organik</th>
+                                                <th>N-Total</th>
+                                                <th rowspan="2">P-tersedia mg/Kg</th>
+                                                <th>K-dd</th>
+                                                <th>Na</th>
+                                                <th>Ca</th>
+                                                <th>Mg</th>
+                                                <th>KTK</th>
+                                                <th>Al-dd</th>
+                                                <th rowspan="2"></th>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="2">g/Kg</th>
+                                                <th colspan="6">g/Kg</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           
+                                            <tr>
+                                                <td style="width: 20px !important;" >1</td>
+                                                <td>738.D.06.06.16</td>
+                                                <td>T1.1 (2000)</td>
+                                                <td>6.3</td>
+                                                <td>36.495</td>
+                                                <td>2.55</td>
+                                                <td>54</td>
+                                                <td>0.51</td>
+                                                <td>0.01</td>
+                                                <td>666</td>
+                                                <td>3.33</td>
+                                                <td>26.1</td>
+                                                <td>ttu</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                        Aksi <span class="caret"></span></button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                          <li><a href="#" data-toggle="modal" data-target="#edit"><i class="lnr lnr-pencil"></i> Edit</a></li>
+                                                          <li><a href="<?= base_url('admin') ?>"><i class="fa fa-eye"></i> Detail</a></li>
+                                                          <li><a href="" onclick="delete_data()"><i class="lnr lnr-trash"></i> Hapus </a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- /.table-responsive -->
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel -->
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
 
 
                     <div class="modal fade" tabindex="-1" role="dialog" id="add">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2017 at 12:06 PM
+-- Generation Time: Nov 09, 2017 at 12:39 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -142,6 +142,7 @@ CREATE TABLE `nilai_sifat_tanah` (
 
 CREATE TABLE `sifat_kimia_tanah` (
   `kode_lab` varchar(50) NOT NULL,
+  `kode_sampel` varchar(50) NOT NULL,
   `nama_tanaman` varchar(150) NOT NULL,
   `tahun_tanaman` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -150,10 +151,10 @@ CREATE TABLE `sifat_kimia_tanah` (
 -- Dumping data for table `sifat_kimia_tanah`
 --
 
-INSERT INTO `sifat_kimia_tanah` (`kode_lab`, `nama_tanaman`, `tahun_tanaman`) VALUES
-('T1.1 (2000)', 'Tanaman 1', '2000'),
-('T1.2 (2000)', 'Tanaman 2', '2000'),
-('T1.3 (2000)', 'Tanaman 3', '2000');
+INSERT INTO `sifat_kimia_tanah` (`kode_lab`, `kode_sampel`, `nama_tanaman`, `tahun_tanaman`) VALUES
+('T1.1 (2000)', '', 'Tanaman 1', '2000'),
+('T1.2 (2000)', '', 'Tanaman 2', '2000'),
+('T1.3 (2000)', '', 'Tanaman 3', '2000');
 
 -- --------------------------------------------------------
 

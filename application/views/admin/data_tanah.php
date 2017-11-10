@@ -8,6 +8,9 @@
                         <div class="col-lg-12">
                             <h1 class="page-header">Data Tanah Lab FP Kecil <button class="btn btn-success" data-toggle="modal" data-target="#add"><i class="fa fa-plus"> </i></button></h1> 
                         </div>
+                        <div class="col-lg-12">
+                            <?= $this->session->flashdata('msg') ?>
+                        </div>
                         <!-- /.col-lg-12 -->
                     </div>
 
@@ -164,7 +167,7 @@
 
                     <div class="modal fade" tabindex="-1" role="dialog" id="add">
                       <div class="modal-dialog" role="document">
-                        <?= form_open('admin/data_pelamar') ?>
+                        <?= form_open('admin/data_tanah') ?>
                        <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -175,7 +178,7 @@
                                     <label for="Kode Lab">Kode Lab</label>
                                     <input type="text" class="form-control" name="kode_lab" required>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="Jenis Sampel">Jenis Sampel</label>
                                     <input type="text" class="form-control" name="jenis_sampel" required>
                                 </div>
@@ -185,12 +188,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="pH H20 (1:1)">pH H20 (1:1)</label>
-                                    <input type="number" class="form-control" name="pH" required>
+                                    <input type="text" class="form-control" name="pH" required>
+                                    <input type="hidden" name="k_ph_tanah" value="1">
                                 </div>
                                 <div class="form-group">
                                     <label for="C-Organik">C-Organik</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control" name="c_organik" required>
+                                        <input type="hidden" name="k_c_organik" value="2">
                                         <span class="input-group-addon">g/Kg</span>
                                     </div>
                                 </div>
@@ -198,6 +203,7 @@
                                     <label for="N-Total">N-Total</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control" name="n_total" required>
+                                        <input type="hidden" name="k_n_total" value="3">
                                         <span class="input-group-addon">g/Kg</span>
                                     </div>
                                 </div>
@@ -205,6 +211,7 @@
                                     <label for="P-Tersedia">P-tersedia</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control" name="p_tersedia" required>
+                                        <input type="hidden" name="k_p_tersedia" value="4">
                                         <span class="input-group-addon">mg/Kg</span>
                                     </div>
                                 </div>
@@ -212,6 +219,7 @@
                                     <label for="K-dd">K-dd</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control" name="k-dd" required>
+                                        <input type="hidden" name="k_kalium" value="5">
                                         <span class="input-group-addon">g/Kg</span>
                                     </div>
                                 </div>
@@ -219,6 +227,7 @@
                                     <label for="Na">Na</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control" name="na" required>
+                                        <input type="hidden" name="k_natrium" value="6">
                                         <span class="input-group-addon">g/Kg</span>
                                     </div>
                                 </div>
@@ -226,6 +235,7 @@
                                     <label for="Ca">Ca</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control" name="ca" required>
+                                        <input type="hidden" name="k_kalsium" value=7>
                                         <span class="input-group-addon">g/Kg</span>
                                     </div>
                                 </div>
@@ -233,6 +243,7 @@
                                     <label for="Mg">Mg</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control" name="mg" required>
+                                        <input type="hidden" name="k_magnesium" value=8">
                                         <span class="input-group-addon">g/Kg</span>
                                     </div>
                                 </div>
@@ -240,6 +251,7 @@
                                     <label for="KTK">KTK</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control" name="ktk" required>
+                                        <input type="hidden" name="k_ktk" value="9">
                                         <span class="input-group-addon">g/Kg</span>
                                     </div>
                                 </div>
@@ -247,9 +259,10 @@
                                     <label for="Al-dd">Al-dd</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control" name="al_dd" required>
+                                        <input type="hidden" name="k_aluminium" value="10">
                                         <span class="input-group-addon">g/Kg</span>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- <div class="form-group">
                                     <label for="% Fraksi Tekstur">% Fraksi Tekstur</label>
                                 </div>

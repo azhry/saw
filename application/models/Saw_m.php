@@ -18,7 +18,7 @@ class Saw_m extends MY_Model
 		foreach ($data as $row)
 		{
 			$nilai = $this->bobot_m->get_row(['id_bobot' => $row->id_bobot])->nilai;
-			$bobot = $this->kriteria_m->get_row(['id_kriteria' => $row->id_kriteria])->bobot;
+			$bobot = $this->kriteria_m->get_row(['id_kriteria' => $row->id_kriteria])->nilai;
 			$hasil += $this->crisping($row->id_kriteria, $nilai) * $bobot;
 		}
 
@@ -43,7 +43,7 @@ class Saw_m extends MY_Model
 
 	public function get_threshold($id_kriteria, $type = 'MAX')
 	{
-		$this->db->select([$type . '(nilai) AS nilai_' . strtolower($type)]);
+		$this->db->select([$type . '('. $this->data['table_name'] .'.nilai) AS nilai_' . strtolower($type)]);
 		$this->db->from($this->data['table_name']);
 		$this->db->join('bobot', $this->data['table_name'] . '.id_bobot = bobot.id_bobot');
 		$this->db->where([$this->data['table_name'] . '.id_kriteria' => $id_kriteria]);
@@ -59,7 +59,20 @@ class Saw_m extends MY_Model
 		$sifat_tanah = [];
 		foreach ($tanah as $row)
 		{
-
+			$nilai_tanah = $this->nilai_sifat_tanah_m->get(['kode_lab' => $row->kode_lab]);
+			$hasil = $this->defuzzification($nilai_tanah);
+			$row = (array)$row;
+			$row['hasil'] = $hasil;
+			$sifat_tanah []= $row;
 		}
+
+		$arr = [];
+		foreach ($sifat_tanah as $row)
+		{
+			$arr[$row['kode_lab']] = $row['hasil'];
+		}
+
+		array_multisort($arr, SORT_DESC, $sifat_tanah);
+		return $sifat_tanah;
 	}
 }

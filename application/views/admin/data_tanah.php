@@ -178,7 +178,7 @@
                                     <label for="Kode Lab">Kode Lab</label>
                                     <input type="text" class="form-control" name="kode_lab" required>
                                 </div>
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                     <label for="Jenis Sampel">Jenis Sampel</label>
                                     <input type="text" class="form-control" name="jenis_sampel" required>
                                 </div>
@@ -186,7 +186,14 @@
                                     <label for="Kode Sampel">Kode Sampel</label>
                                     <input type="text" class="form-control" name="kode_sampel" required>
                                 </div>
-                                <div class="form-group">
+                                <?php foreach ($kriteria as $row): ?>
+                                    <div class="form-group">
+                                        <label for="label_<?= $row->id_kriteria ?>"><?= $row->nama ?></label>
+                                        <input type="number" class="form-control" name="label_value[]" required>
+                                        <input type="hidden" name="label_id[]" value="<?= $row->id_kriteria ?>">
+                                    </div>    
+                                <?php endforeach; ?>
+                                <!-- <div class="form-group">
                                     <label for="pH H20 (1:1)">pH H20 (1:1)</label>
                                     <input type="text" class="form-control" name="pH" required>
                                     <input type="hidden" name="k_ph_tanah" value="1">

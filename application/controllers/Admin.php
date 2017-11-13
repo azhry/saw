@@ -9,7 +9,6 @@ class Admin extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-
     }
 
     public function index()
@@ -28,51 +27,48 @@ class Admin extends MY_Controller
 
     public function data_tanah()
     {
-        $this->load->model('Saw_m');
-        
+        $this->load->model('saw_m');
+        $this->load->model('kriteria_m');
+        $this->load->model('nilai_sifat_tanah_m');
+        $this->load->model('sifat_kimia_tanah_m');
+        $this->load->model('bobot_m');
+
+        // $hasil = $this->saw_m->sort_desc();
+        // $this->dump($hasil);
+        // exit;
+
         if ($this->POST('simpan'))
         {
+            $this->sifat_kimia_tanah_m->insert([
+                'kode_lab'      => $this->POST('kode_lab'),
+                'kode_sampel'   => $this->POST('kode_sampel'),
+            ]);
 
-            // bobot pH Tanah
-            // $pH_tanah = $this->POST('pH');
-            // if($pH_tanah >= 0 || $pH_tanah <= 4.4)
-            //     $id_bobot = 1;
-            // elseif($pH_tanah >= 4.5 || $pH_tanah <= 5.5)
-            //     $id_bobot = 2;
-            // elseif($pH_tanah >= 5.6 || $pH_tanah <= 6.5)
-            //     $id_bobot = 3;
-            // elseif($pH_tanah >= 6.6 || $pH_tanah <= 7.5)
-            //     $id_bobot = 4;
-            // elseif($pH_tanah >= 7.6 || $pH_tanah <= 8.5)
-            //     $id_bobot = 5;
-            // else
-            //     echo "input nilai";
+            $kode_lab = $this->POST('kode_lab');
+            $label_id = $this->POST('label_id');
+            $label_value = $this->POST('label_value');
+            for ($i = 0; $i < count($label_value); $i++)
+            {
+                $id_kriteria = $label_id[$i];
+                $nilai = $label_value[$i];
+                $bobot = $this->bobot_m->get_row(['id_kriteria' => $id_kriteria, 'min_range <=' => $nilai, 'max_range >=' => $nilai]);
+                if ($bobot)
+                {
+                    $this->nilai_sifat_tanah_m->insert([
+                        'id_kriteria'   => $id_kriteria,
+                        'id_bobot'      => $bobot->id_bobot,
+                        'kode_lab'      => $kode_lab,
+                        'nilai'         => $nilai
+                    ]);
+                }
+            }
 
-
-            // echo $id_bobot; exit;
-
-
-
-            $this->data['data_tanah'] = [
-                'id_kriteria'           => 1,
-                'id_bobot'          => 1,
-                'kode_lab' => $this->POST('kode_lab'), 
-                'nilai' => 7.8     
-            ];
-            
-            // if (!$this->Saw_m->required_input(array_keys($this->data['data_tanah'])))
-            // {
-            //     $this->flashmsg('Anda harus mengisi form dengan benar', 'danger');
-            //     redirect('admin/data_tanah');
-            //     exit;   
-            // }
-            
-            $this->Saw_m->insert($this->data['data_tanah']);
             $this->flashmsg('Data tanah berhasil disimpan');
             redirect('admin/data_tanah');
             exit;
         }
 
+        $this->data['kriteria']     = $this->kriteria_m->get();
         $this->data['title']        = 'Data Tanah Lab FP Kecil';
         $this->data['content']      = 'admin/data_tanah';
         $this->template($this->data);

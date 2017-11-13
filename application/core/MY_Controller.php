@@ -9,9 +9,10 @@ class MY_Controller extends CI_Controller
 		date_default_timezone_set("Asia/Jakarta");
 	}
 
-	public function template($data)
+	public function template($data, $path = 'admin')
 	{
-	    return $this->load->view('admin/templates/template', $data);
+		$data['path'] = $path;
+	    return $this->load->view($path . '/templates/template', $data);
 	}
 
 	public function POST($name)

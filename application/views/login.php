@@ -46,7 +46,7 @@
                         <?= form_open('login') ?>
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="username" name="username" type="text" value="">
+                                    <input class="form-control" placeholder="Username" name="username" type="text" value="">
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">

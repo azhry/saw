@@ -72,33 +72,6 @@
                                                     </td>        
                                                 </tr>
                                             <?php endforeach; ?>
-
-                                            <!-- <tr>
-                                                <td style="width: 20px !important;" >1</td>
-                                                <td>738.D.06.06.16</td>
-                                                <td>T1.1 (2000)</td>
-                                                <td>6.3</td>
-                                                <td>36.495</td>
-                                                <td>2.55</td>
-                                                <td>54</td>
-                                                <td>0.51</td>
-                                                <td>0.01</td>
-                                                <td>666</td>
-                                                <td>3.33</td>
-                                                <td>26.1</td>
-                                                <td>ttu</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                                        Aksi <span class="caret"></span></button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                          <li><a href="#" data-toggle="modal" data-target="#edit"><i class="lnr lnr-pencil"></i> Edit</a></li>
-                                                          <li><a href="<?= base_url('admin') ?>"><i class="fa fa-eye"></i> Detail</a></li>
-                                                          <li><a href="" onclick="delete_data()"><i class="lnr lnr-trash"></i> Hapus </a></li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                            </tr> -->
                                         </tbody>
                                     </table>
                                     <!-- /.table-responsive -->
@@ -114,7 +87,7 @@
 
                     <div class="modal fade" tabindex="-1" role="dialog" id="add">
                       <div class="modal-dialog" role="document">
-                        <?= form_open('admin/data_tanah') ?>
+                        <?= form_open('pegawai/data_tanah') ?>
                        <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -149,99 +122,7 @@
                                         <input type="hidden" name="label_id[]" value="<?= $row->id_kriteria ?>">
                                     </div>    
                                 <?php endforeach; ?>
-                                <!-- <div class="form-group">
-                                    <label for="pH H20 (1:1)">pH H20 (1:1)</label>
-                                    <input type="text" class="form-control" name="pH" required>
-                                    <input type="hidden" name="k_ph_tanah" value="1">
-                                </div>
-                                <div class="form-group">
-                                    <label for="C-Organik">C-Organik</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="c_organik" required>
-                                        <input type="hidden" name="k_c_organik" value="2">
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="N-Total">N-Total</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="n_total" required>
-                                        <input type="hidden" name="k_n_total" value="3">
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="P-Tersedia">P-tersedia</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="p_tersedia" required>
-                                        <input type="hidden" name="k_p_tersedia" value="4">
-                                        <span class="input-group-addon">mg/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="K-dd">K-dd</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="k-dd" required>
-                                        <input type="hidden" name="k_kalium" value="5">
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Na">Na</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="na" required>
-                                        <input type="hidden" name="k_natrium" value="6">
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Ca">Ca</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="ca" required>
-                                        <input type="hidden" name="k_kalsium" value=7>
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Mg">Mg</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="mg" required>
-                                        <input type="hidden" name="k_magnesium" value=8">
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="KTK">KTK</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="ktk" required>
-                                        <input type="hidden" name="k_ktk" value="9">
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Al-dd">Al-dd</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="al_dd" required>
-                                        <input type="hidden" name="k_aluminium" value="10">
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div> -->
-                                <!-- <div class="form-group">
-                                    <label for="% Fraksi Tekstur">% Fraksi Tekstur</label>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Pasir">Pasir</label>
-                                    <input type="number" class="form-control" name="pasir" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Debu">Debu</label>
-                                    <input type="number" class="form-control" name="debu" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Liat">Liat</label>
-                                    <input type="number" class="form-control" name="liat" required>
-                                </div> -->
-
+                                
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -255,7 +136,7 @@
 
                     <div class="modal fade" tabindex="-1" role="dialog" id="edit">
                       <div class="modal-dialog" role="document">
-                        <?= form_open('admin/') ?>
+                        <?= form_open('pegawai/data-tanah') ?>
                        <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -342,21 +223,6 @@
                                         <span class="input-group-addon">g/Kg</span>
                                     </div>
                                 </div>
-                               <!--  <div class="form-group">
-                                    <label for="% Fraksi Tekstur">% Fraksi Tekstur</label>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Pasir">Pasir</label>
-                                    <input type="number" class="form-control" name="pasir" id="" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Debu">Debu</label>
-                                    <input type="number" class="form-control" name="debu" id="" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Liat">Liat</label>
-                                    <input type="number" class="form-control" name="liat" id="" required>
-                                </div> -->
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

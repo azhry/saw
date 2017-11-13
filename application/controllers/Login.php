@@ -1,30 +1,36 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-/**
- *
- */
+
 class Login extends MY_Controller
 {
 
 	private $data = [];
 
-  	function __construct()
+  	public function __construct()
 	{
 	    parent::__construct();	
 	    $username = $this->session->userdata('username');
+	    $hak_akses = $this->session->userdata('hak_akses');
 		if (isset($username))
 		{
-			redirect('admin');
-			exit;
+			switch ($hak_akses) 
+			{
+				case 'kabagian':
+					redirect('admin');
+					exit;
+				case 'staff':
+					redirect('pegawai');
+					exit;
+			}
 		}
-		$this->load->model('admin_m');	
+		$this->load->model('login_m');	
   	}
 
   	public function index()
   	{
   		if ($this->POST('login-submit'))
 		{
-			if (!$this->admin_m->required_input(['username','password'])) 
+			if (!$this->login_m->required_input(['username','password'])) 
 			{
 				$this->flashmsg('Data harus lengkap','warning');
 				redirect('login');
@@ -32,11 +38,11 @@ class Login extends MY_Controller
 			}
 			
 			$this->data = [
-			'username'	=> $this->POST('username'),
-			'password'	=> md5($this->POST('password'))
+				'username'	=> $this->POST('username'),
+				'password'	=> md5($this->POST('password'))
 			];
 
-			$result = $this->admin_m->login($this->data);
+			$result = $this->login_m->login($this->data);
 			if (!isset($result)) 
 			{
 				$this->flashmsg('Username atau password salah','danger');

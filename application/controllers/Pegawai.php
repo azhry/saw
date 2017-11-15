@@ -69,6 +69,16 @@ class Pegawai extends MY_Controller
             exit;
         }
 
+        if ($this->POST('get') && $this->POST('kode_lab'))
+        {
+            $tanah = $this->sifat_kimia_tanah_m->get_row(['kode_lab' => $this->POST('kode_lab')]);
+            $tanah = (array)$tanah;
+            $tanah['nilai'] = $this->nilai_sifat_tanah_m->get(['kode_lab' => $this->POST('kode_lab')]);
+            $tanah['nilai'] = (array)$tanah['nilai'];
+            echo json_encode($tanah);
+            exit;
+        }
+
         $this->data['tanah']        = $this->sifat_kimia_tanah_m->get();
         $arr = [];
         $i = 0;

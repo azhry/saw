@@ -64,7 +64,7 @@
                                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                                             Aksi <span class="caret"></span></button>
                                                             <ul class="dropdown-menu" role="menu">
-                                                              <li><a href="#" data-toggle="modal" data-target="#edit"><i class="lnr lnr-pencil"></i> Edit</a></li>
+                                                              <li><a href="#" onclick="get_data_tanah('<?= $row['data']->kode_lab ?>')" data-toggle="modal" data-target="#edit"><i class="lnr lnr-pencil"></i> Edit</a></li>
                                                               <li><a href="<?= base_url('admin') ?>"><i class="fa fa-eye"></i> Detail</a></li>
                                                               <li><a href="" onclick="delete_data()"><i class="lnr lnr-trash"></i> Hapus </a></li>
                                                             </ul>
@@ -143,90 +143,40 @@
                             <h4 class="modal-title">Edit Data</h4>
                           </div>
                           <div class="modal-body">
-                                <input type="hidden" name="" id="">
-                               <div class="form-group">
-                                    <label for="Kode Lab">Kode Lab</label>
-                                    <input type="text" class="form-control" name="kode_lab" id="" required>
-                                </div>
+                            <input type="hidden" name="kode_lab" id="kode_lab">
                                 <div class="form-group">
-                                    <label for="Jenis Sampel">Jenis Sampel</label>
-                                    <input type="text" class="form-control" name="jenis_sampel" id="" required>
+                                    <label for="Kode Lab">Kode Lab</label>
+                                    <input type="text" id="edit_kode_lab" class="form-control" name="edit_kode_lab" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="Kode Sampel">Kode Sampel</label>
-                                    <input type="text" class="form-control" name="kode_sampel" id="" required>
+                                    <input type="text" class="form-control" id="edit_kode_sampel" name="edit_kode_sampel" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="pH H20 (1:1)">pH H20 (1:1)</label>
-                                    <input type="number" class="form-control" name="pH" id="" required>
+                                    <label for="Nama Tanaman">Nama Tanaman</label>
+                                    <input type="text" class="form-control" id="edit_nama_tanaman" name="edit_nama_tanaman" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="C-Organik">C-Organik</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="c_organik" id="" required>
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
+                                    <label for="Tahun Tanaman">Tahun Tanaman</label>
+                                    <input type="text" class="form-control" id="edit_tahun_tanaman" name="edit_tahun_tanaman" required>
                                 </div>
-                                <div class="form-group">
-                                    <label for="N-Total">N-Total</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="n_total" id="" required>
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="P-Tersedia">P-tersedia</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="p_tersedia" id="" required>
-                                        <span class="input-group-addon">mg/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="K-dd">K-dd</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="k-dd" id="" required>
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Na">Na</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="na" id="" required>
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Ca">Ca</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="ca" id="" required>
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Mg">Mg</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="mg" id="" required>
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="KTK">KTK</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="ktk" id="" required>
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Al-dd">Al-dd</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" name="al_dd" id="" required>
-                                        <span class="input-group-addon">g/Kg</span>
-                                    </div>
-                                </div>
+                                <?php foreach ($kriteria as $row): ?>
+                                    <div class="form-group">
+                                        <label for="label_<?= $row->id_kriteria ?>"><?= $row->nama ?></label>
+
+                                        <?php  
+                                            $bobot = $this->bobot_m->get(['id_kriteria' => $row->id_kriteria]);
+                                        ?>
+
+                                        <input type="number" id="edit_<?= $row->id_kriteria ?>" class="form-control" name="label_value[]" step="0.01" min="<?= $bobot[0]->min_range ?>" max="<?= $bobot[count($bobot) - 1]->max_range ?>" required>
+                                        <input type="hidden" name="label_id[]" value="<?= $row->id_kriteria ?>">
+                                        <input type="hidden" name="nilai_<?= $row->id_kriteria ?>" id="nilai_<?= $row->id_kriteria ?>">
+                                    </div>    
+                                <?php endforeach; ?>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                            <input type="submit" name="simpan" value="Simpan" class="btn btn-primary">
+                            <input type="submit" name="edit" value="Edit" class="btn btn-primary">
                           </div>
                           <?= form_close() ?>
                         </div><!-- /.modal-content -->
@@ -247,6 +197,33 @@
                         responsive: true
                     });
                 });
+
+                function get_data_tanah(kode_lab) {
+                    $.ajax({
+                        url: '<?= base_url('pegawai/data-tanah') ?>',
+                        type: 'POST',
+                        data: {
+                            get: true,
+                            kode_lab: kode_lab
+                        },
+                        success: function(response) {
+                            var json = $.parseJSON(response);
+                            $('#kode_lab').val(json.kode_lab);
+                            $('#edit_kode_lab').val(json.kode_lab);
+                            $('#edit_kode_sampel').val(json.kode_sampel);
+                            $('#edit_nama_tanaman').val(json.nama_tanaman);
+                            $('#edit_tahun_tanaman').val(json.tahun_tanaman);
+                            
+                            for (var i = 0; i < json.nilai.length; i++) {
+                                $('#edit_' + json.nilai[i].id_kriteria).val(json.nilai[i].nilai);
+                                $('#nilai_' + json.nilai[i].id_kriteria).val(json.nilai[i].id_kriteria);
+                            }
+                        },
+                        error: function(e) {
+                            console.log(e.responseText);
+                        }
+                    });
+                }
 
                 function delete_bahan_baku(id_bahan_baku) {
                     $.ajax({

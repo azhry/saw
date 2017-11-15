@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2017 at 12:39 PM
+-- Generation Time: Nov 15, 2017 at 03:17 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -134,6 +134,22 @@ CREATE TABLE `nilai_sifat_tanah` (
   `nilai` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `nilai_sifat_tanah`
+--
+
+INSERT INTO `nilai_sifat_tanah` (`id_nilai`, `id_kriteria`, `id_bobot`, `kode_lab`, `nilai`) VALUES
+(1, 1, 1, '123', 3),
+(2, 2, 6, '123', 3),
+(3, 3, 15, '123', 3),
+(4, 4, 16, '123', 3),
+(5, 5, 25, '123', 3),
+(6, 6, 30, '123', 3),
+(7, 7, 32, '123', 3),
+(8, 8, 39, '123', 3),
+(9, 9, 41, '123', 3),
+(10, 10, 46, '123', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -152,9 +168,7 @@ CREATE TABLE `sifat_kimia_tanah` (
 --
 
 INSERT INTO `sifat_kimia_tanah` (`kode_lab`, `kode_sampel`, `nama_tanaman`, `tahun_tanaman`) VALUES
-('T1.1 (2000)', '', 'Tanaman 1', '2000'),
-('T1.2 (2000)', '', 'Tanaman 2', '2000'),
-('T1.3 (2000)', '', 'Tanaman 3', '2000');
+('123', '123', 'tanaman', '2014');
 
 -- --------------------------------------------------------
 
@@ -168,6 +182,14 @@ CREATE TABLE `tb_login` (
   `pass_user` varchar(32) NOT NULL,
   `hak_akses` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_login`
+--
+
+INSERT INTO `tb_login` (`kode_login`, `nama_user`, `pass_user`, `hak_akses`) VALUES
+(1, 'fairuz', '985fabf8f96dc1c4c306341031569937', 'kabagian'),
+(2, 'riri', '985fabf8f96dc1c4c306341031569937', 'staff');
 
 --
 -- Indexes for dumped tables
@@ -221,12 +243,12 @@ ALTER TABLE `kriteria`
 -- AUTO_INCREMENT for table `nilai_sifat_tanah`
 --
 ALTER TABLE `nilai_sifat_tanah`
-  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tb_login`
 --
 ALTER TABLE `tb_login`
-  MODIFY `kode_login` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `kode_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

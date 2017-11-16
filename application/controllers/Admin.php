@@ -111,4 +111,11 @@ class Admin extends MY_Controller
         $this->data['content']  = 'admin/hasil';
         $this->template($this->data);
     }
+
+    public function cara_perhitungan()
+    {
+        $this->data['title']    = 'Cara Perhitungan';
+        $this->data['content']  = 'admin/cara_perhitungan';
+        $this->template($this->data);
+    }
 }

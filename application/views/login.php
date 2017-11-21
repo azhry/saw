@@ -43,13 +43,13 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <?= form_open('login') ?>
+                        <?= form_open('login', ['id' => 'login-form']) ?>
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Username" name="username" type="text" value="">
+                                    <input class="form-control" id="username" placeholder="Username" name="username" type="text" value="">
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <input class="form-control" id="password" placeholder="Password" name="password" type="password" value="">
                                 </div>
                                 <div class="checkbox">
                                     <label>
@@ -57,7 +57,7 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <input type="submit" name="login-submit" value="Login" class="btn btn-lg btn-success btn-block">
+                                <input type="submit" name="login-submit" id="login-submit" value="Login" class="btn btn-lg btn-success btn-block">
                             </fieldset>
                         <?= form_close() ?>
                     </div>

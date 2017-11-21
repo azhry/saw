@@ -1,4 +1,4 @@
-
+    <script type="text/javascript" async src="<?= base_url('assets/MathJax/MathJax.js?config=TeX-MML-AM_CHTML') ?>"></script>
     <style type="text/css">
         tr th, tr td{text-align: center; padding: 1%;}
         ol > li{margin-bottom: 2%; margin-top: 3%;}
@@ -50,21 +50,21 @@
                 </tr>
             </thead>
             <tbody>
+                <?php $i = 0; foreach ($tanah as $row): ?>
                 <tr>
-                    <td style="width: 20px !important;" >1</td>
-                    <td>738.D.06.06.16</td>
-                    <td>T1.1 (2000)</td>
-                    <td>6.3</td>
-                    <td>36.495</td>
-                    <td>2.55</td>
-                    <td>54</td>
-                    <td>0.51</td>
-                    <td>0.01</td>
-                    <td>666</td>
-                    <td>3.33</td>
-                    <td>26.1</td>
-                    <td>ttu</td>
+                    <td style="width: 20px !important;" ><?= ++$i ?></td>
+                    <td><?= $row->kode_lab ?></td>
+                    <td><?= $row->kode_sampel ?></td>
+                    
+                    <?php  
+                        $nilai = $this->nilai_sifat_tanah_m->get(['kode_lab' => $row->kode_lab]);
+                    ?>
+
+                    <?php foreach ($nilai as $n): ?>
+                    <td><?= $n->nilai ?></td>
+                    <?php endforeach; ?>
                 </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
         <!-- /.table-responsive -->
@@ -92,19 +92,25 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $i = 0; foreach ($tanah as $row): ?>
                     <tr>
-                        <th>A1</th>
-                        <th>1</th>
-                        <th>2</th>
-                        <th>3</th>
-                        <th>4</th>
-                        <th>5</th>
-                        <th>6</th>
-                        <th>7</th>
-                        <th>8</th>
-                        <th>9</th>
-                        <th>10</th>
+                        <th>A<?= ++$i ?></th>
+                        
+                        <?php  
+                            $nilai = $this->nilai_sifat_tanah_m->get(['kode_lab' => $row->kode_lab]);
+                        ?>
+
+                        <?php foreach ($nilai as $n): ?>
+                        <th>
+                            <?php  
+                                $bobot = $this->bobot_m->get_row(['id_bobot' => $n->id_bobot]);
+                                if ($bobot) echo $bobot->nilai;
+                                else echo '-';
+                            ?>
+                        </th>
+                        <?php endforeach; ?>
                     </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
             <div class="ket_tabel">
@@ -113,6 +119,7 @@
 
             <div>
                 Diubah ke dalam matriks keputusan  X dengan data : <br>
+                $$\begin{pmatrix}a & b\\\ c & d\end{pmatrix}$$
                     3 4 5 4 4 2 3 1 4 5 <br>
                 x = 2 4 5 4 2 2 2 1 3 2 <br>
                     3 3 5 4 3 2 2 1 3 1 <br>
@@ -132,20 +139,20 @@
                 <ol style="list-style-type: lower-alpha;">
                     <li>Untuk keasaman tanah (pH) termasuk kedalam atribut keuntungan (benefit)</li>
                     <div>
-                        r_11= 3/max⁡〖 {2,3,3}〗 = 3/3 =1 <br>
-                        r_21=2/max⁡〖 {2,3,3}〗 =2/( 3) = 0,67 <br>
-                         r_31=3/max⁡〖 {2,3,3}〗  = 3/3 = 1 <br>
-                        r_11= 3/max⁡〖 {2,3,3}〗 = 3/3 =1 <br>
-                        r_21=2/max⁡〖 {2,3,3}〗 =2/( 3) = 0,67 <br>
-                         r_31=3/max⁡〖 {2,3,3}〗  = 3/3 = 1 <br>
+                        r_11= 3/max⁡〖{2,3,3}〗 = 3/3 =1 <br>
+                        r_21=2/max⁡〖{2,3,3}〗 =2/( 3) = 0,67 <br>
+                         r_31=3/max⁡〖{2,3,3}〗  = 3/3 = 1 <br>
+                        r_11= 3/max⁡〖{2,3,3}〗 = 3/3 =1 <br>
+                        r_21=2/max⁡〖{2,3,3}〗 =2/( 3) = 0,67 <br>
+                         r_31=3/max⁡〖{2,3,3}〗  = 3/3 = 1 <br>
 
                     </div>
 
                     <li>Untuk karbon organik tanah termasuk kedalam atribut keuntungan (benefit)</li>
                     <div>
-                        r_12=4/max⁡〖 {3,4,4}〗  = 4/4 = 1 <br>
-                        r_22=4/max⁡〖 {3,4,4}〗  = 4/4 = 1 <br>
-                        r_32=3/max⁡〖 {3,4,4}〗  = 3/4 = 0,75 <br>
+                        r_12=4/max⁡〖{3,4,4}〗  = 4/4 = 1 <br>
+                        r_22=4/max⁡〖{3,4,4}〗  = 4/4 = 1 <br>
+                        r_32=3/max⁡〖{3,4,4}〗  = 3/4 = 0,75 <br>
 
                     </div>
 
@@ -158,52 +165,52 @@
 
                     <li>Untuk fosfor(P) yang tersedia termasuk ke dalam atribut keuntungan  (benefit)</li>
                     <div>
-                        r_14=4/max⁡〖 {4,4,4}〗  = 4/4 = 1 <br>
-                        r_24=4/max⁡〖 {4,4,4}〗  = 4/4 = 1 <br>
-                        r_34=4/max⁡〖 {4,4,4}〗  = 4/4 = 1 <br>
+                        r_14=4/max⁡〖{4,4,4}〗  = 4/4 = 1 <br>
+                        r_24=4/max⁡〖{4,4,4}〗  = 4/4 = 1 <br>
+                        r_34=4/max⁡〖{4,4,4}〗  = 4/4 = 1 <br>
                     </div>
 
                     <li>Untuk kalium dapat dipertukarkan termasuk ke dalam atribut keuntungan (benefit)</li>
                     <div>
-                        r_15=4/max⁡〖 {2,3,4}〗  = 4/4 = 1 <br>
-                        r_25=2/max⁡〖 {2,3,4}〗  = 2/4 = 0,05 <br>
-                        r_35=3/max⁡〖 {2,3,4}〗  = 3/4 = 0,75 <br>
+                        r_15=4/max⁡〖{2,3,4}〗  = 4/4 = 1 <br>
+                        r_25=2/max⁡〖{2,3,4}〗  = 2/4 = 0,05 <br>
+                        r_35=3/max⁡〖{2,3,4}〗  = 3/4 = 0,75 <br>
                     </div>
 
                     <li>Untuk natrium dapat dipertukarkan termasuk kedalam atribut keuntungan (benefit)</li>
                     <div>
-                        r_16=2/max⁡〖 {2,2,2}〗  = 2/2 = 1 <br>
-                        r_26=2/max⁡〖 {2,2,2}〗  = 2/2 = 1 <br>
-                        r_36=2/max⁡〖 {2,2,2}〗  = 2/2 = 1 <br>
+                        r_16=2/max⁡〖{2,2,2}〗  = 2/2 = 1 <br>
+                        r_26=2/max⁡〖{2,2,2}〗  = 2/2 = 1 <br>
+                        r_36=2/max⁡〖{2,2,2}〗  = 2/2 = 1 <br>
 
                     </div>
 
                     <li>Untuk kalsium dapat dipertukarkan termasuk kedalam atribut keuntungan (benefit)</li>
                     <div>
-                        r_17=3/max⁡〖 {2,2,3}〗  = 3/3 = 1 <br>
-                        r_27=2/max⁡〖 {2,2,3}〗  = 2/3 = 0,67 <br>
-                        r_37=2/max⁡〖 {2,2,3}〗  = 2/3 = 0,67 <br>
+                        r_17=3/max⁡〖{2,2,3}〗  = 3/3 = 1 <br>
+                        r_27=2/max⁡〖{2,2,3}〗  = 2/3 = 0,67 <br>
+                        r_37=2/max⁡〖{2,2,3}〗  = 2/3 = 0,67 <br>
                     </div>
 
                     <li>Untuk magnesium dapat dipertukarkan termasuk kedalam atribut keuntungan (benefit)</li>
                     <div>
-                        r_18=1/max⁡〖 {1,1,1}〗  = 1/1 = 1 <br>
-                        r_28=1/max⁡〖 {1,1,1}〗  = 1/1 = 1 <br>
-                        r_38=1/max⁡〖 {1,1,1}〗  = 1/1 = 1 <br>
+                        r_18=1/max⁡〖{1,1,1}〗  = 1/1 = 1 <br>
+                        r_28=1/max⁡〖{1,1,1}〗  = 1/1 = 1 <br>
+                        r_38=1/max⁡〖{1,1,1}〗  = 1/1 = 1 <br>
                     </div>
 
                     <li>Untuk ktk tanah termasuk kedalam atribut keuntungan (benefit)</li>
                     <div>
-                        r_19=4/max⁡〖 {3,3,4}〗  = 4/4 = 1 <br>
-                        r_29=3/max⁡〖 {3,3,4}〗  = 3/4 = 0,75 <br>
-                        r_39=3/max⁡〖 {3,3,4}〗  = 3/4 = 0,75 <br>
+                        r_19=4/max⁡〖{3,3,4}〗  = 4/4 = 1 <br>
+                        r_29=3/max⁡〖{3,3,4}〗  = 3/4 = 0,75 <br>
+                        r_39=3/max⁡〖{3,3,4}〗  = 3/4 = 0,75 <br>
                     </div>
 
                     <li>Untuk aluminium dapat dipertukarkan kedalam atribut keuntungan (benefit)</li>
                     <div>
-                        r_110=5/max⁡〖 {1,2,3,4,5}〗  = 5/5 = 1 <br>
-                        r_210=2/max⁡〖 {1,2,3,4,5}〗  = 2/5 = 0,4 <br>
-                        r_310=1/max⁡〖 {1,2,3,4,5}〗  = 1/5 = 0,2 <br>
+                        r_110=5/max⁡〖{1,2,3,4,5}〗  = 5/5 = 1 <br>
+                        r_210=2/max⁡〖{1,2,3,4,5}〗  = 2/5 = 0,4 <br>
+                        r_310=1/max⁡〖{1,2,3,4,5}〗  = 1/5 = 0,2 <br>
                     </div>
                     <div>
                         Matriks R : <br>

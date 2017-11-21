@@ -130,6 +130,7 @@ class Admin extends MY_Controller
 
     public function laporan_cara_perhitungan()
     {
-        $this->load->view('admin/laporan_cara_perhitungan');
+        exec('assets\phantomjs-2.1.1\bin\phantomjs.exe assets\phantomjs-2.1.1\generate_pdf.js ' . base_url('login/laporan-cara-perhitungan') . ' laporan.pdf');
+        redirect(base_url('laporan.pdf'));
     }
 }

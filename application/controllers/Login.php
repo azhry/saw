@@ -57,5 +57,15 @@ class Login extends MY_Controller
 	public function daftar()
   	{
 	    $this->load->view('daftar');
-	}	
+	}
+
+	public function laporan_cara_perhitungan()
+    {
+        $this->load->model('sifat_kimia_tanah_m');
+        $this->load->model('nilai_sifat_tanah_m');
+        $this->load->model('bobot_m');
+
+        $this->data['tanah'] = $this->sifat_kimia_tanah_m->get();
+        $this->load->view('admin/laporan_cara_perhitungan', $this->data);
+    }	
 }

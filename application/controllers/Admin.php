@@ -38,6 +38,15 @@ class Admin extends MY_Controller
         $this->template($this->data);
     }
 
+    public function kriteria()
+    {
+        $this->load->model('kriteria_m');
+        $this->data['kriteria'] = $this->kriteria_m->get();
+        $this->data['title']    = 'Kriteria';
+        $this->data['content']  = 'admin/kriteria';
+        $this->template($this->data);
+    }
+
     public function data_tanah()
     {
         $this->load->model('saw_m');

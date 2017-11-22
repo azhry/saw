@@ -61,11 +61,30 @@ class Login extends MY_Controller
 
 	public function laporan_cara_perhitungan()
     {
-        $this->load->model('sifat_kimia_tanah_m');
-        $this->load->model('nilai_sifat_tanah_m');
-        $this->load->model('bobot_m');
+    	ini_set('max_execution_time', 0);
+    	ini_set('memory_limit', -1);
+    	if ($this->GET('admin'))
+    	{
+    		$this->load->model('sifat_kimia_tanah_m');
+	        $this->load->model('nilai_sifat_tanah_m');
+	        $this->load->model('bobot_m');
+	        $this->load->model('kriteria_m');
 
-        $this->data['tanah'] = $this->sifat_kimia_tanah_m->get();
-        $this->load->view('admin/laporan_cara_perhitungan', $this->data);
+	        $this->data['kriteria']	= $this->kriteria_m->get();
+	        $this->data['tanah'] 	= $this->sifat_kimia_tanah_m->get();
+	        $this->load->view('admin/laporan_cara_perhitungan', $this->data);
+    	}
+    	else
+    	{
+    		echo 'You must login to generate report!';
+    	}
     }	
+
+    public function test()
+    {
+    	ini_set('max_execution_time', 0);
+    	ini_set('memory_limit', -1);
+        exec('assets\phantomjs-2.1.1\bin\phantomjs.exe assets\phantomjs-2.1.1\generate_pdf.js ' . base_url('login/laporan-cara-perhitungan?nocache='.mt_rand(0, 9999999) . '&admin=true') . ' laporan.pdf');
+        redirect(base_url('laporan.pdf'));
+    }
 }

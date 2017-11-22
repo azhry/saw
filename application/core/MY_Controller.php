@@ -20,6 +20,11 @@ class MY_Controller extends CI_Controller
 		return $this->input->post($name);
 	}
 
+	public function GET($name, $xss_clean = true)
+	{
+		return $this->input->get($name, $xss_clean);
+	}
+
 	public function flashmsg($msg, $type = 'success',$name='msg')
 	{
 		return $this->session->set_flashdata($name, '<div class="alert alert-'.$type.' alert-dismissable"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'.$msg.'</div>');

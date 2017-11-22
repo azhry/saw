@@ -37,7 +37,7 @@ var capture = function (page, pageUrl, callback) {
                 clearInterval(interval);
                 callback();
             }
-        }, 100);
+        }, 1500);
     });
 };
 

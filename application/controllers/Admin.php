@@ -130,7 +130,9 @@ class Admin extends MY_Controller
 
     public function laporan_cara_perhitungan()
     {
-        exec('assets\phantomjs-2.1.1\bin\phantomjs.exe assets\phantomjs-2.1.1\generate_pdf.js ' . base_url('login/laporan-cara-perhitungan') . ' laporan.pdf');
+        ini_set('max_execution_time', 0);
+        ini_set('memory_limit', -1);
+        exec('assets\phantomjs-2.1.1\bin\phantomjs.exe assets\phantomjs-2.1.1\generate_pdf.js ' . base_url('login/laporan-cara-perhitungan?nocache='.mt_rand(0, 9999999) . '&admin=true') . ' laporan.pdf');
         redirect(base_url('laporan.pdf'));
     }
 }

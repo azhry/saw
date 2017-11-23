@@ -16,7 +16,7 @@ class Login extends MY_Controller
 			switch ($hak_akses) 
 			{
 				case 'kabagian':
-					redirect('admin');
+					redirect('kepala-bagian');
 					exit;
 				case 'staff':
 					redirect('pegawai');
@@ -80,11 +80,4 @@ class Login extends MY_Controller
     	}
     }	
 
-    public function test()
-    {
-    	ini_set('max_execution_time', 0);
-    	ini_set('memory_limit', -1);
-        exec('assets\phantomjs-2.1.1\bin\phantomjs.exe assets\phantomjs-2.1.1\generate_pdf.js ' . base_url('login/laporan-cara-perhitungan?nocache='.mt_rand(0, 9999999) . '&admin=true') . ' laporan.pdf');
-        redirect(base_url('laporan.pdf'));
-    }
 }

@@ -31,10 +31,18 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li><a href="<?= base_url('admin/') ?>"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-                        <!-- <li><a href="<?= base_url('admin/hasil_uji_daun') ?>" class=""><i class="fa fa-bar-chart"></i> <span>Data Daun</span></a></li> -->
-                        <li><a href="<?= base_url('admin/data-tanah') ?>" class=""><i class="fa fa-list"></i> <span>Data Tanah</span></a></li></li>
-                        <li><a href="<?= base_url('admin/kriteria') ?>" class=""><i class="fa fa-book"></i> <span>Data Kriteria</span></a></li></li>
+                        <li>
+                            <a href="<?= base_url('kepala-bagian/') ?>"><i class="fa fa-home"></i> <span>Dashboard</span></a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('kepala-bagian/data-tanah') ?>" class=""><i class="fa fa-bar-chart"></i> <span>Data Tanah</span></a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('kepala-bagian/kriteria') ?>" class=""><i class="fa fa-book"></i> <span>Data Kriteria</span></a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('kepala-bagian/hasil') ?>" class=""><i class="fa fa-list"></i> <span>Data Ranking Tanah</span></a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

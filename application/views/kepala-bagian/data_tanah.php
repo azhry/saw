@@ -6,7 +6,7 @@
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Data Tanah<button class="btn btn-success" data-toggle="modal" data-target="#add"><i class="fa fa-plus"> </i></button></h1> 
+                            <h1 class="page-header">Data Tanah <button class="btn btn-success" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i></button></h1> 
                         </div>
                         <div class="col-lg-12">
                             <?= $this->session->flashdata('msg') ?>

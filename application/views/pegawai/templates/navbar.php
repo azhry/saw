@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- <a class="navbar-brand" href="<?= base_url() ?>"><img style="margin-top: -14px; border-radius: 50%;" width="70" height="50" src="<?= base_url('assets/img/logo.jpg') ?>"></a> -->
-                <a class="navbar-brand" href="<?= base_url() ?>">SAW</a>
+                <a class="navbar-brand" href="<?= base_url() ?>">PT. Mitra Ogan</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -31,8 +31,8 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li><a href="<?= base_url('pegawai/') ?>"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-                        <li><a href="<?= base_url('pegawai/data-tanah') ?>" class=""><i class="fa fa-book"></i> <span>Data Tanah</span></a></li></li>
+                        <li><a href="<?= base_url('pegawai') ?>"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+                        <li><a href="<?= base_url('pegawai/data-tanah') ?>" class=""><i class="fa fa-list"></i> <span>Data Tanah</span></a></li></li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

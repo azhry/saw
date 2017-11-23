@@ -6,7 +6,7 @@
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Data Tanah Lab FP Kecil <button class="btn btn-success" data-toggle="modal" data-target="#add"><i class="fa fa-plus"> </i></button></h1> 
+                            <h1 class="page-header">Data Tanah<button class="btn btn-success" data-toggle="modal" data-target="#add"><i class="fa fa-plus"> </i></button></h1> 
                         </div>
                         <div class="col-lg-12">
                             <?= $this->session->flashdata('msg') ?>
@@ -18,7 +18,7 @@
                         <div class="col-lg-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Data Tanah Lab FP Kecil
+                                    Data Tanah
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
@@ -51,9 +51,9 @@
                                         </thead>
                                         <tbody>
                                            
-                                            <?php foreach ($tanah as $row): ?>
+                                            <?php $i = 0; foreach ($tanah as $row): ?>
                                                 <tr>
-                                                    <td></td>
+                                                    <td><?= ++$i ?></td>
                                                     <td><?= $row['data']->kode_lab ?></td>
                                                     <td><?= $row['data']->kode_sampel ?></td>
                                                     <?php foreach ($row['nilai'] as $bobot): ?>
@@ -64,9 +64,9 @@
                                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                                             Aksi <span class="caret"></span></button>
                                                             <ul class="dropdown-menu" role="menu">
-                                                              <li><a href="#" onclick="get_data_tanah('<?= $row['data']->kode_lab ?>')" data-toggle="modal" data-target="#edit"><i class="lnr lnr-pencil"></i> Edit</a></li>
-                                                              <li><a href="<?= base_url('admin') ?>"><i class="fa fa-eye"></i> Detail</a></li>
-                                                              <li><a href="" onclick="delete_data()"><i class="lnr lnr-trash"></i> Hapus </a></li>
+                                                              <li><a href="#" onclick="get_data_tanah('<?= $row['data']->kode_lab ?>')" data-toggle="modal" data-target="#edit"><i class="fa fa-pencil"></i> Edit</a></li>
+                                                              <li><a href="<?= base_url('pegawai/detail-tanah') ?>"><i class="fa fa-eye"></i> Detail</a></li>
+                                                              <li><a href="" onclick="delete_data()"><i class="fa fa-trash"></i> Hapus</a></li>
                                                             </ul>
                                                         </div>
                                                     </td>        
@@ -97,10 +97,6 @@
                                 <div class="form-group">
                                     <label for="Kode Lab">Kode Lab</label>
                                     <input type="text" class="form-control" name="kode_lab" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Kode Sampel">Kode Sampel</label>
-                                    <input type="text" class="form-control" name="kode_sampel" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="Nama Tanaman">Nama Tanaman</label>
@@ -147,10 +143,6 @@
                                 <div class="form-group">
                                     <label for="Kode Lab">Kode Lab</label>
                                     <input type="text" id="edit_kode_lab" class="form-control" name="edit_kode_lab" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Kode Sampel">Kode Sampel</label>
-                                    <input type="text" class="form-control" id="edit_kode_sampel" name="edit_kode_sampel" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="Nama Tanaman">Nama Tanaman</label>

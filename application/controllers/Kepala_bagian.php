@@ -1,10 +1,8 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
 
-class Admin extends MY_Controller
+class Kepala_bagian extends MY_Controller
 {
-
-    public function __construct()
+	public function __construct()
     {
         parent::__construct();
         $this->data['username'] = $this->session->userdata('username');
@@ -26,25 +24,32 @@ class Admin extends MY_Controller
 
     public function index()
     {
-        $this->data['title']        = 'Dashboard Admin' . $this->title;
-        $this->data['content']      = 'admin/dashboard';
-        $this->template($this->data);
+        $this->data['title']        = 'Dashboard Kepala Bagian' . $this->title;
+        $this->data['content']      = 'kepala-bagian/dashboard';
+        $this->template($this->data, 'kepala-bagian');
     }
-
-    // public function hasil_uji_daun()
-    // {
-    //     $this->data['title']        = 'Data Hasil Uji Daun Sawit';
-    //     $this->data['content']      = 'admin/hasil_uji_daun';
-    //     $this->template($this->data);
-    // }
 
     public function kriteria()
     {
         $this->load->model('kriteria_m');
+
+        if ($this->POST('simpan'))
+        {
+        	$this->kriteria_m->insert([
+        		'nama'	=> $this->POST('nama'),
+        		'bobot'	=> $this->POST('bobot'),
+        		'nilai'	=> $this->POST('nilai')
+        	]);
+
+        	$this->flashmsg('<i class="fa fa-success"></i> Data berhasil disimpan');
+        	redirect('kepala-bagian/kriteria');
+        	exit;
+        }
+
         $this->data['kriteria'] = $this->kriteria_m->get();
-        $this->data['title']    = 'Kriteria';
-        $this->data['content']  = 'admin/kriteria';
-        $this->template($this->data);
+        $this->data['title']    = 'Kriteria' . $this->title;
+        $this->data['content']  = 'kepala-bagian/kriteria';
+        $this->template($this->data, 'kepala-bagian');
     }
 
     public function data_tanah()
@@ -84,7 +89,7 @@ class Admin extends MY_Controller
             }
 
             $this->flashmsg('Data tanah berhasil disimpan');
-            redirect('admin/data_tanah');
+            redirect('kepala-bagian/data_tanah');
             exit;
         }
 
@@ -108,8 +113,8 @@ class Admin extends MY_Controller
         $this->data['tanah']        = $arr;
         $this->data['kriteria']     = $this->kriteria_m->get();
         $this->data['title']        = 'Data Tanah' . $this->title;
-        $this->data['content']      = 'admin/data_tanah';
-        $this->template($this->data);
+        $this->data['content']      = 'kepala-bagian/data_tanah';
+        $this->template($this->data, 'kepala-bagian');
     }
 
     public function hasil()
@@ -117,15 +122,15 @@ class Admin extends MY_Controller
         $this->load->model('saw_m');
         $this->data['hasil']    = $this->saw_m->sort_desc();
         $this->data['title']    = 'Hasil Perhitungan';
-        $this->data['content']  = 'admin/hasil';
-        $this->template($this->data);
+        $this->data['content']  = 'kepala-bagian/hasil';
+        $this->template($this->data, 'kepala-bagian');
     }
 
     public function cara_perhitungan()
     {
         $this->data['title']    = 'Cara Perhitungan';
-        $this->data['content']  = 'admin/cara_perhitungan';
-        $this->template($this->data);
+        $this->data['content']  = 'kepala-bagian/cara_perhitungan';
+        $this->template($this->data, 'kepala-bagian');
     }
 
     public function laporan_cara_perhitungan()
@@ -138,7 +143,7 @@ class Admin extends MY_Controller
         ini_set('max_execution_time', 0);
         ini_set('memory_limit', -1);
         $rand = mt_rand(1000, 2000);
-        $cmd = 'assets\phantomjs-2.1.1\bin\phantomjs.exe assets\phantomjs-2.1.1\generate_pdf.js ' . base_url('login/laporan-cara-perhitungan?nocache='.mt_rand(0, 9999999) . '^&admin=true') . ' laporan.pdf ' . mt_rand(2000, 2500);
+        $cmd = 'assets\phantomjs-2.1.1\bin\phantomjs.exe assets\phantomjs-2.1.1\generate_pdf.js ' . base_url('login/laporan-cara-perhitungan?nocache='.mt_rand(0, 9999999) . '^&kepala-bagian=true') . ' laporan.pdf ' . mt_rand(2000, 2500);
         echo exec($cmd);
         readfile(base_url('laporan.pdf'));
         // redirect(base_url('laporan.pdf'));

@@ -1,0 +1,91 @@
+<!-- MAIN -->
+        <div class="main">
+            <!-- MAIN CONTENT -->
+            <div class="main-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">Kriteria Tanah <button class="btn btn-success" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i></button></h1> 
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Kriteria
+                                </div>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Nama</th>
+                                                <th>Bobot</th>
+                                                <th>Nilai</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i = 0; foreach ($kriteria as $row): ?>
+                                            <tr>
+                                                <td><?= ++$i ?></td>
+                                                <td><?= $row->nama ?></td>
+                                                <td><?= $row->bobot ?></td>
+                                                <td><?= $row->nilai ?></td>
+                                                <td>
+                                                    <a href="#" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a> 
+                                                    <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                                                </td>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel -->
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="add">
+            <div class="modal-dialog" role="document">
+                <?= form_open('kepala-bagian/kriteria') ?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Tambah Data</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nama">Nama</label>
+                            <input type="text" class="form-control" name="nama">
+                        </div>
+                        <div class="form-group">
+                            <label for="bobot">Bobot</label>
+                            <input type="text" class="form-control" name="bobot">
+                        </div>
+                        <div class="form-group">
+                            <label for="nilai">Nilai</label>
+                            <input type="number" class="form-control" name="nilai">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                        <input type="submit" name="simpan" value="Simpan" class="btn btn-primary">
+                    </div>
+                </div>
+                <?= form_close() ?>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#dataTables-example').dataTable();
+            });
+        </script>

@@ -46,6 +46,34 @@ class Kepala_bagian extends MY_Controller
         	exit;
         }
 
+        if ($this->POST('get') && $this->POST('id_kriteria'))
+        {
+        	$this->data['kriteria'] = $this->kriteria_m->get_row(['id_kriteria' => $this->POST('id_kriteria')]);
+        	echo json_encode($this->data['kriteria']);
+        	exit;
+        }
+
+        if ($this->POST('delete') && $this->POST('id_kriteria'))
+        {
+        	$this->kriteria_m->delete($this->POST('id_kriteria'));
+        	$this->flashmsg('<i class="fa fa-success"></i> Data berhasil dihapus');
+        	redirect('kepala-bagian/kriteria');
+        	exit;
+        }
+
+        if ($this->POST('edit') && $this->POST('id_kriteria'))
+        {
+        	$this->kriteria_m->update($this->POST('id_kriteria'), [
+        		'nama'	=> $this->POST('nama'),
+        		'bobot'	=> $this->POST('bobot'),
+        		'nilai'	=> $this->POST('nilai')
+        	]);
+
+        	$this->flashmsg('<i class="fa fa-success"></i> Data berhasil di-edit');
+        	redirect('kepala-bagian/kriteria');
+        	exit;
+        }
+
         $this->data['kriteria'] = $this->kriteria_m->get();
         $this->data['title']    = 'Kriteria' . $this->title;
         $this->data['content']  = 'kepala-bagian/kriteria';

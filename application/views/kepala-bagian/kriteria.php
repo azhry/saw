@@ -35,8 +35,8 @@
                                                 <td><?= $row->bobot ?></td>
                                                 <td><?= $row->nilai ?></td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a> 
-                                                    <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                                                    <a href="#" onclick="get_kriteria(<?= $row->id_kriteria ?>);" class="btn btn-primary" data-toggle="modal" data-target="#edit"><i class="fa fa-pencil"></i> Edit</a> 
+                                                    <a href="#" onclick="delete_kriteria(<?= $row->id_kriteria ?>);" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
                                                 </td>
                                             </tr>
                                             <?php endforeach; ?>
@@ -84,8 +84,80 @@
             </div>
         </div>
 
+        <div class="modal fade" tabindex="-1" role="dialog" id="edit">
+            <div class="modal-dialog" role="document">
+                <?= form_open('kepala-bagian/kriteria') ?>
+                <input type="hidden" name="id_kriteria" id="id_kriteria">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Edit Data</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nama">Nama</label>
+                            <input type="text" class="form-control" name="nama" id="nama">
+                        </div>
+                        <div class="form-group">
+                            <label for="bobot">Bobot</label>
+                            <input type="text" class="form-control" name="bobot" id="bobot">
+                        </div>
+                        <div class="form-group">
+                            <label for="nilai">Nilai</label>
+                            <input type="number" class="form-control" name="nilai" id="nilai">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                        <input type="submit" name="edit" value="Edit" class="btn btn-primary">
+                    </div>
+                </div>
+                <?= form_close() ?>
+            </div>
+        </div>
+
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#dataTables-example').dataTable();
             });
+
+            function get_kriteria(id_kriteria) {
+                $.ajax({
+                    url: '<?= base_url('kepala-bagian/kriteria') ?>',
+                    type: 'POST',
+                    data: {
+                        id_kriteria: id_kriteria,
+                        get: true
+                    },
+                    success: function(response) {
+                        var json = $.parseJSON(response);
+                        $('#id_kriteria').val(json.id_kriteria);
+                        $('#nama').val(json.nama);
+                        $('#bobot').val(json.bobot);
+                        $('#nilai').val(json.nilai);
+                    },
+                    error: function(e) {
+                        console.log(e.responseText);
+                    }
+                });
+
+                return false;
+            }
+
+            function delete_kriteria(id_kriteria) {
+                $.ajax({
+                    url: '<?= base_url('kepala-bagian/kriteria') ?>',
+                    type: 'POST',
+                    data: {
+                        id_kriteria: id_kriteria,
+                        delete: true
+                    },
+                    success: function(response) {
+                        window.location = '<?= base_url('kepala-bagian/kriteria') ?>'
+                    },
+                    error: function(e) {
+                        console.log(e.responseText);
+                    }
+                });
+            }
         </script>

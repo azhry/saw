@@ -21,7 +21,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Kode Lab</th>
-                                                <th>Kode Sampel</th>
+                                                <!-- <th>Kode Sampel</th> -->
                                                 <th>Nama Tanaman</th>
                                                 <th>Tahun Tanaman</th>
                                                 <th>Hasil</th>
@@ -31,7 +31,7 @@
                                             <?php foreach ($hasil as $row): ?>
                                                 <tr>
                                                     <td><?= $row['kode_lab'] ?></td>
-                                                    <td><?= $row['kode_sampel'] ?></td>
+                                                    <!-- <td><?= $row['kode_sampel'] ?></td> -->
                                                     <td><?= $row['nama_tanaman'] ?></td>
                                                     <td><?= $row['tahun_tanaman'] ?></td>
                                                     <td><?= $row['hasil'] ?></td>
@@ -54,7 +54,8 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#dataTables-example').dataTable({
-                    ordering: false
+                    ordering: false,
+                    filter:false
                 });
             });
         </script>

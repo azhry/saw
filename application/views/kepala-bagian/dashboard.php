@@ -1,11 +1,15 @@
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Menu Utama</h1>
+                    <!-- <h1 class="page-header">Menu Utama</h1> -->
+                    <br>
+                    <center>
+                        <img src="<?= base_url('assets') ?>/logo.png" class="img img-responsive" style="width: 20%;">
+                    </center>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            <div class="row">
+        <!--     <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -72,4 +76,10 @@
                         </a>
                     </div>
                 </div>
-            </div>
+                <center>
+                    <img src="<?= base_url('assets') ?>/logo.png" class="img img-responsive" style="width: 10%;">
+                    <h3>
+                        
+                    </h3>
+                </center>
+            </div> -->

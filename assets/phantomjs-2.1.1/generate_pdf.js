@@ -37,9 +37,11 @@ var capture = function (page, pageUrl, callback) {
                 clearInterval(interval);
                 callback();
             }
-        }, 100);
+        }, args[3]);
     });
 };
+
+console.log(args);
 
 var page = webpage.create();
 var pageUrl = args[1];

@@ -24,9 +24,11 @@ class Pegawai extends MY_Controller
 	}
 
 	public function index()
-	{
-
-	}
+    {
+        $this->data['title']        = 'Dashboard Pegawai' . $this->title;
+        $this->data['content']      = 'pegawai/dashboard';
+        $this->template($this->data);
+    }
 
 	public function data_tanah()
     {
@@ -40,7 +42,7 @@ class Pegawai extends MY_Controller
         {
             $this->sifat_kimia_tanah_m->insert([
                 'kode_lab'      => $this->POST('kode_lab'),
-                'kode_sampel'   => $this->POST('kode_sampel'),
+                'kode_sampel'   => $this->POST('nama_tanaman') . '(' . $this->POST('tahun_tanaman') . ')',
                 'nama_tanaman'  => $this->POST('nama_tanaman'),
                 'tahun_tanaman' => $this->POST('tahun_tanaman')
             ]);
@@ -65,7 +67,45 @@ class Pegawai extends MY_Controller
             }
 
             $this->flashmsg('Data tanah berhasil disimpan');
-            redirect('admin/data_tanah');
+            redirect('pegawai/data-tanah');
+            exit;
+        }
+
+        if ($this->POST('edit'))
+        {
+            $this->sifat_kimia_tanah_m->update($this->POST('kode_lab'), [
+                'kode_lab'      => $this->POST('edit_kode_lab'),
+                'kode_sampel'   => $this->POST('edit_nama_tanaman') . '(' . $this->POST('edit_tahun_tanaman') . ')',
+                'nama_tanaman'  => $this->POST('edit_nama_tanaman'),
+                'tahun_tanaman' => $this->POST('edit_tahun_tanaman')
+            ]);   
+
+            $kode_lab = $this->POST('kode_lab');
+            $label_id = $this->POST('label_id');
+            $label_value = $this->POST('label_value');
+            for ($i = 0; $i < count($label_value); $i++)
+            {
+                $id_kriteria = $label_id[$i];
+                $nilai = $label_value[$i];
+                $bobot = $this->bobot_m->get_row(['id_kriteria' => $id_kriteria, 'min_range <=' => $nilai, 'max_range >=' => $nilai]);
+                if ($bobot)
+                {
+                    $this->nilai_sifat_tanah_m->update_where([
+                        'id_kriteria'   => $id_kriteria,
+                        'kode_lab'      => $this->POST('kode_lab')
+                    ], [
+                        'id_bobot'      => $bobot->id_bobot,
+                        'nilai'         => $nilai
+                    ]);
+                }
+            }
+
+            $this->nilai_sifat_tanah_m->update_where(['kode_lab' => $this->POST('kode_lab')], [
+                'kode_lab'  => $this->POST('edit_kode_lab')
+            ]);
+
+            $this->flashmsg('Data tanah berhasil di-edit');
+            redirect('pegawai/data-tanah');
             exit;
         }
 
@@ -98,7 +138,7 @@ class Pegawai extends MY_Controller
 
         $this->data['tanah']        = $arr;
         $this->data['kriteria']     = $this->kriteria_m->get();
-        $this->data['title']        = 'Data Tanah Lab FP Kecil';
+        $this->data['title']        = 'Data Tanah' . $this->title;
         $this->data['content']      = 'pegawai/data_tanah';
         $this->template($this->data, 'pegawai');
     }

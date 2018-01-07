@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class MY_Controller extends CI_Controller
 {
-  public $title = ' | Sistem Deteksi Penyakit Jantung';
+  public $title = ' | PT. Mitra Ogan';
 	public function __construct()
 	{
 		parent::__construct();
@@ -18,6 +18,11 @@ class MY_Controller extends CI_Controller
 	public function POST($name)
 	{
 		return $this->input->post($name);
+	}
+
+	public function GET($name, $xss_clean = true)
+	{
+		return $this->input->get($name, $xss_clean);
 	}
 
 	public function flashmsg($msg, $type = 'success',$name='msg')

@@ -16,7 +16,7 @@ class Login extends MY_Controller
 			switch ($hak_akses) 
 			{
 				case 'kabagian':
-					redirect('admin');
+					redirect('kepala-bagian');
 					exit;
 				case 'staff':
 					redirect('pegawai');
@@ -61,11 +61,23 @@ class Login extends MY_Controller
 
 	public function laporan_cara_perhitungan()
     {
-        $this->load->model('sifat_kimia_tanah_m');
-        $this->load->model('nilai_sifat_tanah_m');
-        $this->load->model('bobot_m');
+    	ini_set('max_execution_time', 0);
+    	ini_set('memory_limit', -1);
+    	if ($this->GET('admin'))
+    	{
+    		$this->load->model('sifat_kimia_tanah_m');
+	        $this->load->model('nilai_sifat_tanah_m');
+	        $this->load->model('bobot_m');
+	        $this->load->model('kriteria_m');
 
-        $this->data['tanah'] = $this->sifat_kimia_tanah_m->get();
-        $this->load->view('admin/laporan_cara_perhitungan', $this->data);
+	        $this->data['kriteria']	= $this->kriteria_m->get();
+	        $this->data['tanah'] 	= $this->sifat_kimia_tanah_m->get();
+	        $this->load->view('admin/laporan_cara_perhitungan', $this->data);
+    	}
+    	else
+    	{
+    		echo 'You must login to generate report!';
+    	}
     }	
+
 }

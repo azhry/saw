@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
     <script type="text/javascript" async src="<?= base_url('assets/MathJax/MathJax.js?config=TeX-MML-AM_CHTML') ?>"></script>
     <style type="text/css">
         tr th, tr td{text-align: center; padding: 1%;}

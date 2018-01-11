@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+    <script type="text/javascript" async src="<?= base_url('assets/MathJax/MathJax.js?config=TeX-MML-AM_CHTML') ?>"></script>
+=======
     <script type="text/javascript" src="<?= base_url('assets/MathJax/MathJax.js?config=TeX-MML-AM_CHTML') ?>"></script>
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
@@ -7,6 +19,7 @@
         }
       });
     </script>
+>>>>>>> c765c5c8e31a08d78a157dec28dc6fb53b0f50a8
     <style type="text/css">
         tr th, tr td{text-align: center; padding: 1%;}
         ol > li{margin-bottom: 2%; margin-top: 3%;}

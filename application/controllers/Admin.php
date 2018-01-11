@@ -130,6 +130,22 @@ class Admin extends MY_Controller
 
     public function laporan_cara_perhitungan()
     {
+        $this->load->model('saw_m');
+        $this->data['hasil']    = $this->saw_m->sort_desc();
+        $html = $this->load->view('admin/laporan', $this->data, true);
+        $pdfFilePath = 'Laporan Detail Perhitungan - ' . date('Y-m-d') . '.pdf';
+        $this->load->library('m_pdf');
+        $this->m_pdf->pdf->WriteHTML($html);
+        $this->m_pdf->pdf->Output($pdfFilePath, "D");   
+        
+
+        
+        // $this->data['title']    = 'Laporan';
+        // $this->load->view('admin/laporan', $this->data);
+    }
+
+    public function laporan_cara_perhitungan2()
+    {
         @unlink(realpath(APPPATH . '../laporan.pdf'));
         header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
         header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past

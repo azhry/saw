@@ -39,7 +39,7 @@
                                             <?php endforeach; ?>
                                         </tbody>
                                     </table>
-                                    <a class="btn btn-success" href="<?= base_url('admin/laporan-cara-perhitungan') ?>"><i class="fa fa-download"></i> Unduh Laporan</a>
+                                    <a class="btn btn-success" href="<?= base_url('kepala-bagian/laporan-cara-perhitungan') ?>"><i class="fa fa-download"></i> Unduh Laporan</a>
                                 </div>
                                 <!-- /.panel-body -->
                             </div>

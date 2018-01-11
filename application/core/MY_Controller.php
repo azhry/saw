@@ -2,7 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class MY_Controller extends CI_Controller
 {
-  public $title = ' | PT. Mitra Ogan';
+  	public $title = ' | PT. Mitra Ogan';
+	
 	public function __construct()
 	{
 		parent::__construct();

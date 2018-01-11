@@ -163,17 +163,17 @@ class Kepala_bagian extends MY_Controller
 
     public function laporan_cara_perhitungan()
     {
-        @unlink(realpath(APPPATH . '../laporan.pdf'));
-        header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
-        header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
-        header("Content-disposition: attachment; filename=laporan.pdf");
-        header("Content-type: application/pdf");
-        ini_set('max_execution_time', 0);
-        ini_set('memory_limit', -1);
-        $rand = mt_rand(1000, 2000);
-        $cmd = 'assets\phantomjs-2.1.1\bin\phantomjs.exe assets\phantomjs-2.1.1\generate_pdf.js ' . base_url('login/laporan-cara-perhitungan?nocache='.mt_rand(0, 9999999) . '^&kepala-bagian=true') . ' laporan.pdf ' . mt_rand(2000, 2500);
-        echo exec($cmd);
-        readfile(base_url('laporan.pdf'));
-        // redirect(base_url('laporan.pdf'));
+        $this->load->model('saw_m');
+        $this->data['hasil']    = $this->saw_m->sort_desc();
+        $html = $this->load->view('admin/laporan', $this->data, true);
+        $pdfFilePath = 'Laporan Detail Perhitungan - ' . date('Y-m-d') . '.pdf';
+        $this->load->library('m_pdf');
+        $this->m_pdf->pdf->WriteHTML($html);
+        $this->m_pdf->pdf->Output($pdfFilePath, "D");   
+        $this->load->view('admin/laporan', $this->data);
+
+        
+        // $this->data['title']    = 'Laporan';
+        // $this->load->view('admin/laporan', $this->data);
     }
 }

@@ -27,7 +27,7 @@ class Pegawai extends MY_Controller
     {
         $this->data['title']        = 'Dashboard Pegawai' . $this->title;
         $this->data['content']      = 'pegawai/dashboard';
-        $this->template($this->data);
+        $this->template($this->data, 'pegawai');
     }
 
 	public function data_tanah()

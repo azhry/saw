@@ -32,7 +32,10 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li><a href="<?= base_url('pegawai') ?>"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-                        <li><a href="<?= base_url('pegawai/data-tanah') ?>" class=""><i class="fa fa-list"></i> <span>Data Tanah</span></a></li></li>
+                        <li><a href="<?= base_url('pegawai/data-tanah') ?>" class=""><i class="fa fa-list"></i> <span>Data Tanah</span></a></li>
+                        <li>
+                            <a href="<?= base_url('pegawai/kriteria') ?>" class=""><i class="fa fa-book"></i> <span>Data Kriteria</span></a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

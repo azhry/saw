@@ -119,6 +119,14 @@ class Pegawai extends MY_Controller
             exit;
         }
 
+        if ($this->POST('delete') && $this->POST('kode_lab'))
+        {
+            $this->sifat_kimia_tanah_m->delete($this->POST('kode_lab'));
+            $this->flashmsg('<i class="fa fa-success"></i> Data berhasil dihapus');
+            redirect('pegawai/data-tanah');
+            exit;
+        }
+
         $this->data['tanah']        = $this->sifat_kimia_tanah_m->get();
         $arr = [];
         $i = 0;
@@ -142,4 +150,83 @@ class Pegawai extends MY_Controller
         $this->data['content']      = 'pegawai/data_tanah';
         $this->template($this->data, 'pegawai');
     }
+
+    public function detail_data_tanah()
+    {
+        $this->data['tanah']        = $this->sifat_kimia_tanah_m->get();
+        $arr = [];
+        $i = 0;
+        foreach ($this->data['tanah'] as $tanah)
+        {
+            $nilai = $this->nilai_sifat_tanah_m->get(['kode_lab' => $tanah->kode_lab]);
+            $bobot = [];
+            foreach ($nilai as $row)
+            {
+                $kriteria = $this->kriteria_m->get_row(['id_kriteria' => $row->id_kriteria]);
+                $bobot[$kriteria->nama] = $row->nilai;
+            }
+
+            $arr[$i]['nilai']   = $bobot;
+            $arr[$i++]['data']  = $tanah;            
+        }
+
+        $this->data['tanah']        = $arr;
+        $this->data['kriteria']     = $this->kriteria_m->get();
+        
+        $this->data['title']        = 'Detail Data Tanah' . $this->title;
+        $this->data['content']      = 'pegawai/detail_data_tanah';
+        $this->template($this->data, 'pegawai');
+    }
+
+    public function kriteria()
+    {
+        $this->load->model('kriteria_m');
+
+        if ($this->POST('simpan'))
+        {
+            $this->kriteria_m->insert([
+                'nama'  => $this->POST('nama'),
+                'bobot' => $this->POST('bobot'),
+                'nilai' => $this->POST('nilai')
+            ]);
+
+            $this->flashmsg('<i class="fa fa-success"></i> Data berhasil disimpan');
+            redirect('pegawai/kriteria');
+            exit;
+        }
+
+        if ($this->POST('get') && $this->POST('id_kriteria'))
+        {
+            $this->data['kriteria'] = $this->kriteria_m->get_row(['id_kriteria' => $this->POST('id_kriteria')]);
+            echo json_encode($this->data['kriteria']);
+            exit;
+        }
+
+        if ($this->POST('delete') && $this->POST('id_kriteria'))
+        {
+            $this->kriteria_m->delete($this->POST('id_kriteria'));
+            $this->flashmsg('<i class="fa fa-success"></i> Data berhasil dihapus');
+            redirect('pegawai/kriteria');
+            exit;
+        }
+
+        if ($this->POST('edit') && $this->POST('id_kriteria'))
+        {
+            $this->kriteria_m->update($this->POST('id_kriteria'), [
+                'nama'  => $this->POST('nama'),
+                'bobot' => $this->POST('bobot'),
+                'nilai' => $this->POST('nilai')
+            ]);
+
+            $this->flashmsg('<i class="fa fa-success"></i> Data berhasil di-edit');
+            redirect('pegawai/kriteria');
+            exit;
+        }
+
+        $this->data['kriteria'] = $this->kriteria_m->get();
+        $this->data['title']    = 'Kriteria' . $this->title;
+        $this->data['content']  = 'pegawai/kriteria';
+        $this->template($this->data, 'pegawai');
+    }
+
 }

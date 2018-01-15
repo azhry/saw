@@ -21,6 +21,9 @@ class Login extends MY_Controller
 				case 'staff':
 					redirect('pegawai');
 					exit;
+				case 'admin':
+					redirect('admin');
+					exit;
 			}
 		}
 		$this->load->model('login_m');	

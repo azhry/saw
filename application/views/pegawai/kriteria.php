@@ -55,7 +55,7 @@
 
         <div class="modal fade" tabindex="-1" role="dialog" id="add">
             <div class="modal-dialog" role="document">
-                <?= form_open('admin/kriteria') ?>
+                <?= form_open('pegawai/kriteria') ?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -86,7 +86,7 @@
 
         <div class="modal fade" tabindex="-1" role="dialog" id="edit">
             <div class="modal-dialog" role="document">
-                <?= form_open('admin/kriteria') ?>
+                <?= form_open('pegawai/kriteria') ?>
                 <input type="hidden" name="id_kriteria" id="id_kriteria">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -123,7 +123,7 @@
 
             function get_kriteria(id_kriteria) {
                 $.ajax({
-                    url: '<?= base_url('admin/kriteria') ?>',
+                    url: '<?= base_url('pegawai/kriteria') ?>',
                     type: 'POST',
                     data: {
                         id_kriteria: id_kriteria,
@@ -146,14 +146,14 @@
 
             function delete_kriteria(id_kriteria) {
                 $.ajax({
-                    url: '<?= base_url('admin/kriteria') ?>',
+                    url: '<?= base_url('pegawai/kriteria') ?>',
                     type: 'POST',
                     data: {
                         id_kriteria: id_kriteria,
                         delete: true
                     },
                     success: function(response) {
-                        window.location = '<?= base_url('admin/kriteria') ?>'
+                        window.location = '<?= base_url('pegawai/kriteria') ?>'
                     },
                     error: function(e) {
                         console.log(e.responseText);

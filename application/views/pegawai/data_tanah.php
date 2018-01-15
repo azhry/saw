@@ -66,7 +66,7 @@
                                                             <ul class="dropdown-menu" role="menu">
                                                               <li><a href="#" onclick="get_data_tanah('<?= $row['data']->kode_lab ?>')" data-toggle="modal" data-target="#edit"><i class="fa fa-pencil"></i> Edit</a></li>
                                                               <li><a href="<?= base_url('pegawai/detail-tanah') ?>"><i class="fa fa-eye"></i> Detail</a></li>
-                                                              <li><a href="" onclick="delete_data()"><i class="fa fa-trash"></i> Hapus</a></li>
+                                                              <li><a href="" onclick="delete_data_tanah('<?= $row['data']->kode_lab ?>')"><i class="fa fa-trash"></i> Hapus</a></li>
                                                             </ul>
                                                         </div>
                                                     </td>        
@@ -217,19 +217,19 @@
                     });
                 }
 
-                function delete_bahan_baku(id_bahan_baku) {
+                 function delete_data_tanah(kode_lab) {
                     $.ajax({
-                        url: '<?= base_url('kasir/bahan-baku') ?>',
+                        url: '<?= base_url('pegawai/data_tanah') ?>',
                         type: 'POST',
                         data: {
-                            id_bahan_baku: id_bahan_baku,
+                            kode_lab: kode_lab,
                             delete: true
                         },
-                        success: function() {
-                            window.location = '<?= base_url('kasir/bahan-baku') ?>';
+                        success: function(response) {
+                            window.location = '<?= base_url('pegawai/data_tanah') ?>'
                         },
-                        error: function(err) {
-                            console.log(err.responseText);
+                        error: function(e) {
+                            console.log(e.responseText);
                         }
                     });
                 }

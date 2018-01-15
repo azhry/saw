@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2018 at 05:00 PM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Generation Time: Nov 15, 2017 at 03:17 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -141,26 +139,16 @@ CREATE TABLE `nilai_sifat_tanah` (
 --
 
 INSERT INTO `nilai_sifat_tanah` (`id_nilai`, `id_kriteria`, `id_bobot`, `kode_lab`, `nilai`) VALUES
-(1, 1, 1, '12345', 3),
-(2, 2, 6, '12345', 3),
-(3, 3, 15, '12345', 3),
-(4, 4, 16, '12345', 3),
-(5, 5, 25, '12345', 3),
-(6, 6, 30, '12345', 3),
-(7, 7, 32, '12345', 3),
-(8, 8, 39, '12345', 3),
-(9, 9, 41, '12345', 3),
-(10, 10, 46, '12345', 3),
-(11, 1, 3, '12311', 6),
-(12, 2, 7, '12311', 6),
-(13, 3, 15, '12311', 6),
-(14, 4, 16, '12311', 6),
-(15, 5, 25, '12311', 6),
-(16, 6, 30, '12311', 6),
-(17, 7, 33, '12311', 6),
-(18, 8, 39, '12311', 6),
-(19, 9, 42, '12311', 6),
-(20, 10, 46, '12311', 6);
+(1, 1, 1, '123', 3),
+(2, 2, 6, '123', 3),
+(3, 3, 15, '123', 3),
+(4, 4, 16, '123', 3),
+(5, 5, 25, '123', 3),
+(6, 6, 30, '123', 3),
+(7, 7, 32, '123', 3),
+(8, 8, 39, '123', 3),
+(9, 9, 41, '123', 3),
+(10, 10, 46, '123', 3);
 
 -- --------------------------------------------------------
 
@@ -180,8 +168,7 @@ CREATE TABLE `sifat_kimia_tanah` (
 --
 
 INSERT INTO `sifat_kimia_tanah` (`kode_lab`, `kode_sampel`, `nama_tanaman`, `tahun_tanaman`) VALUES
-('12311', 'aaa(2012)', 'aaa', '2012'),
-('12345', 'tanaman2(2014)', 'tanaman2', '2014');
+('123', '123', 'tanaman', '2014');
 
 -- --------------------------------------------------------
 
@@ -202,8 +189,7 @@ CREATE TABLE `tb_login` (
 
 INSERT INTO `tb_login` (`kode_login`, `nama_user`, `pass_user`, `hak_akses`) VALUES
 (1, 'fairuz', '985fabf8f96dc1c4c306341031569937', 'kabagian'),
-(2, 'riri', '985fabf8f96dc1c4c306341031569937', 'staff'),
-(3, 'admin', '985fabf8f96dc1c4c306341031569937', 'admin');
+(2, 'riri', '985fabf8f96dc1c4c306341031569937', 'staff');
 
 --
 -- Indexes for dumped tables
@@ -225,8 +211,7 @@ ALTER TABLE `kriteria`
 -- Indexes for table `nilai_sifat_tanah`
 --
 ALTER TABLE `nilai_sifat_tanah`
-  ADD PRIMARY KEY (`id_nilai`),
-  ADD KEY `kode_lab` (`kode_lab`);
+  ADD PRIMARY KEY (`id_nilai`);
 
 --
 -- Indexes for table `sifat_kimia_tanah`
@@ -253,28 +238,17 @@ ALTER TABLE `bobot`
 -- AUTO_INCREMENT for table `kriteria`
 --
 ALTER TABLE `kriteria`
-  MODIFY `id_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `nilai_sifat_tanah`
 --
 ALTER TABLE `nilai_sifat_tanah`
-  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tb_login`
 --
 ALTER TABLE `tb_login`
-  MODIFY `kode_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `nilai_sifat_tanah`
---
-ALTER TABLE `nilai_sifat_tanah`
-  ADD CONSTRAINT `fk_kode_lab` FOREIGN KEY (`kode_lab`) REFERENCES `sifat_kimia_tanah` (`kode_lab`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
-
+  MODIFY `kode_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

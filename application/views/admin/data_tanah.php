@@ -65,7 +65,7 @@
                                                             Aksi <span class="caret"></span></button>
                                                             <ul class="dropdown-menu" role="menu">
                                                               <li><a href="#" onclick="get_data_tanah('<?= $row['data']->kode_lab ?>')" data-toggle="modal" data-target="#edit"><i class="fa fa-pencil"></i> Edit</a></li>
-                                                              <li><a href="<?= base_url('admin/detail-tanah') ?>"><i class="fa fa-eye"></i> Detail</a></li>
+                                                              <!-- <li><a href="<?= base_url('admin/detail-tanah') ?>"><i class="fa fa-eye"></i> Detail</a></li> -->
                                                               <li><a href="" onclick="delete_data_tanah('<?= $row['data']->kode_lab ?>')"><i class="fa fa-trash"></i> Hapus</a></li>
                                                             </ul>
                                                         </div>

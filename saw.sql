@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2018 at 05:00 PM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Generation Time: Feb 26, 2018 at 07:10 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -213,7 +213,8 @@ INSERT INTO `tb_login` (`kode_login`, `nama_user`, `pass_user`, `hak_akses`) VAL
 -- Indexes for table `bobot`
 --
 ALTER TABLE `bobot`
-  ADD PRIMARY KEY (`id_bobot`);
+  ADD PRIMARY KEY (`id_bobot`),
+  ADD KEY `id_kriteria` (`id_kriteria`);
 
 --
 -- Indexes for table `kriteria`
@@ -226,7 +227,9 @@ ALTER TABLE `kriteria`
 --
 ALTER TABLE `nilai_sifat_tanah`
   ADD PRIMARY KEY (`id_nilai`),
-  ADD KEY `kode_lab` (`kode_lab`);
+  ADD KEY `kode_lab` (`kode_lab`),
+  ADD KEY `id_bobot` (`id_bobot`),
+  ADD KEY `id_kriteria` (`id_kriteria`);
 
 --
 -- Indexes for table `sifat_kimia_tanah`
@@ -249,30 +252,42 @@ ALTER TABLE `tb_login`
 --
 ALTER TABLE `bobot`
   MODIFY `id_bobot` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
 --
 -- AUTO_INCREMENT for table `kriteria`
 --
 ALTER TABLE `kriteria`
-  MODIFY `id_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `nilai_sifat_tanah`
 --
 ALTER TABLE `nilai_sifat_tanah`
-  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `tb_login`
 --
 ALTER TABLE `tb_login`
   MODIFY `kode_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `bobot`
+--
+ALTER TABLE `bobot`
+  ADD CONSTRAINT `bobot_ibfk_1` FOREIGN KEY (`id_kriteria`) REFERENCES `kriteria` (`id_kriteria`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `nilai_sifat_tanah`
 --
 ALTER TABLE `nilai_sifat_tanah`
-  ADD CONSTRAINT `fk_kode_lab` FOREIGN KEY (`kode_lab`) REFERENCES `sifat_kimia_tanah` (`kode_lab`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_kode_lab` FOREIGN KEY (`kode_lab`) REFERENCES `sifat_kimia_tanah` (`kode_lab`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `nilai_sifat_tanah_ibfk_1` FOREIGN KEY (`id_bobot`) REFERENCES `bobot` (`id_bobot`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `nilai_sifat_tanah_ibfk_2` FOREIGN KEY (`id_kriteria`) REFERENCES `kriteria` (`id_kriteria`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

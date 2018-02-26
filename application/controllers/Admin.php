@@ -311,8 +311,6 @@ class Admin extends MY_Controller
         $this->m_pdf->pdf->WriteHTML($html);
         $this->m_pdf->pdf->Output($pdfFilePath, "D");   
         
-
-        
         // $this->data['title']    = 'Laporan';
         // $this->load->view('admin/laporan', $this->data);
     }

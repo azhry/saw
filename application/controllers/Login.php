@@ -24,6 +24,9 @@ class Login extends MY_Controller
 				case 'admin':
 					redirect('admin');
 					exit;
+				case 'eksternal':
+					redirect( 'eksternal' );
+					exit;
 			}
 		}
 		$this->load->model('login_m');	

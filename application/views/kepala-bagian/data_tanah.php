@@ -65,7 +65,7 @@
                                                             Aksi <span class="caret"></span></button>
                                                             <ul class="dropdown-menu" role="menu">
                                                               <li><a href="#" data-toggle="modal" data-target="#edit"><i class="fa fa-pencil"></i> Edit</a></li>
-                                                              <li><a href="<?= base_url('admin') ?>"><i class="fa fa-eye"></i> Detail</a></li>
+                                                              <li><a href="<?= base_url('kepala-bagian') ?>"><i class="fa fa-eye"></i> Detail</a></li>
                                                               <li><a href="" onclick="delete_data()"><i class="fa fa-trash"></i> Hapus </a></li>
                                                             </ul>
                                                         </div>
@@ -87,7 +87,7 @@
 
                     <div class="modal fade" tabindex="-1" role="dialog" id="add">
                       <div class="modal-dialog" role="document">
-                        <?= form_open('admin/data_tanah') ?>
+                        <?= form_open('kepala-bagian/data_tanah') ?>
                        <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -131,7 +131,7 @@
 
                     <div class="modal fade" tabindex="-1" role="dialog" id="edit">
                       <div class="modal-dialog" role="document">
-                        <?= form_open('admin/') ?>
+                        <?= form_open('kepala-bagian/') ?>
                        <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

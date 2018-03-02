@@ -41,6 +41,9 @@
                             <a href="<?= base_url('kepala-bagian/kriteria') ?>" class=""><i class="fa fa-book"></i> <span>Data Kriteria</span></a>
                         </li>
                         <li>
+                            <a href="<?= base_url('kepala-bagian/data-bobot') ?>" class=""><i class="fa fa-book"></i> <span>Data Bobot</span></a>
+                        </li>
+                        <li>
                             <a href="<?= base_url('kepala-bagian/hasil') ?>" class=""><i class="fa fa-list"></i> <span>Data Ranking Tanah</span></a>
                         </li>
                     </ul>

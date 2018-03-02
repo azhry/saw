@@ -145,6 +145,65 @@ class Kepala_bagian extends MY_Controller
         $this->template($this->data, 'kepala-bagian');
     }
 
+    public function data_bobot()
+    {
+        $this->load->model('bobot_m');
+        $this->load->model('kriteria_m');
+
+        if ($this->POST('simpan'))
+        {
+            $this->bobot_m->insert([
+                'fuzzy'         => $this->POST('fuzzy'),
+                'id_kriteria'   => $this->POST('id_kriteria'),
+                'min_range'     => $this->POST('min_range'),
+                'max_range'     => $this->POST('max_range')
+            ]);
+
+            $this->flashmsg('<i class="fa fa-success"></i> Data berhasil disimpan');
+            redirect('kepala-bagian/data-bobot');
+            exit;
+        }
+
+        if ($this->POST('get') && $this->POST('id_bobot'))
+        {
+            $this->data['bobot'] = $this->bobot_m->get_row(['id_bobot' => $this->POST('id_bobot')]);
+            $kriteria_opt = [];
+            $this->data['kriteria'] = $this->kriteria_m->get();
+            foreach ($this->data['kriteria'] as $kriteria) $kriteria_opt[$kriteria->id_kriteria] = $kriteria->nama;
+            $this->data['bobot']->dropdown = form_dropdown('id_kriteria', $kriteria_opt, $this->data['bobot']->id_kriteria, ['class' => 'form-control', 'id' => 'id_kriteria']);
+            echo json_encode($this->data['bobot']);
+            exit;
+        }
+
+        if ($this->POST('delete') && $this->POST('id_bobot'))
+        {
+            $this->bobot_m->delete($this->POST('id_bobot'));
+            $this->flashmsg('<i class="fa fa-success"></i> Data berhasil dihapus');
+            redirect('kepala-bagian/data-bobot');
+            exit;
+        }
+
+        if ($this->POST('edit') && $this->POST('id_bobot'))
+        {
+            $this->bobot_m->update($this->POST('id_bobot'), [
+                'fuzzy'         => $this->POST('fuzzy'),
+                'id_kriteria'   => $this->POST('id_kriteria'),
+                'min_range'     => $this->POST('min_range'),
+                'max_range'     => $this->POST('max_range')
+            ]);
+
+            $this->flashmsg('<i class="fa fa-success"></i> Data berhasil di-edit');
+            redirect('kepala-bagian/data-bobot');
+            exit;
+        }
+
+        $this->data['kriteria']     = $this->kriteria_m->get();
+        $this->data['bobot']        = $this->bobot_m->get_bobot();
+        $this->data['title']        = 'Data Bobot | ' . $this->title;
+        $this->data['content']      = 'kepala-bagian/bobot';
+        $this->template($this->data, 'kepala-bagian');
+    }
+
     public function hasil()
     {
         $this->load->model('saw_m');

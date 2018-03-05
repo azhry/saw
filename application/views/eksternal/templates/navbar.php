@@ -34,6 +34,9 @@
                         <li>
                             <a href="<?= base_url('eksternal/') ?>"><i class="fa fa-home"></i> <span>Dashboard</span></a>
                         </li>
+                        <li>
+                            <a href="<?= base_url('eksternal/data-tanah') ?>"><i class="fa fa-bar-chart"></i> <span>Data Tanah</span></a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

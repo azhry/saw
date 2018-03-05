@@ -87,7 +87,7 @@
 
                     <div class="modal fade" tabindex="-1" role="dialog" id="add">
                       <div class="modal-dialog" role="document">
-                        <?= form_open('kepala-bagian/data_tanah') ?>
+                        <?= form_open('eksternal/data-tanah') ?>
                        <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -131,7 +131,7 @@
 
                     <div class="modal fade" tabindex="-1" role="dialog" id="edit">
                       <div class="modal-dialog" role="document">
-                        <?= form_open('kepala-bagian/data-tanah') ?>
+                        <?= form_open('eksternal/data-tanah') ?>
                        <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -191,7 +191,7 @@
 
                 function get_data_tanah(kode_lab) {
                     $.ajax({
-                        url: '<?= base_url('kepala-bagian/data-tanah') ?>',
+                        url: '<?= base_url('eksternal/data-tanah') ?>',
                         type: 'POST',
                         data: {
                             get: true,
@@ -218,14 +218,14 @@
 
                 function delete_data_tanah(kode_lab) {
                     $.ajax({
-                        url: '<?= base_url('kepala-bagian/data-tanah') ?>',
+                        url: '<?= base_url('eksternal/data-tanah') ?>',
                         type: 'POST',
                         data: {
                             kode_lab: kode_lab,
                             delete: true
                         },
                         success: function(response) {
-                            window.location = '<?= base_url('kepala-bagian/data-tanah') ?>'
+                            window.location = '<?= base_url('eksternal/data-tanah') ?>'
                         },
                         error: function(e) {
                             console.log(e.responseText);

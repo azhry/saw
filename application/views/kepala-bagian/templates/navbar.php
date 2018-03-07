@@ -34,7 +34,7 @@
                         <li>
                             <a href="<?= base_url('kepala-bagian/') ?>"><i class="fa fa-home"></i> <span>Dashboard</span></a>
                         </li>
-                        <li>
+                       <!--  <li>
                             <a href="<?= base_url('kepala-bagian/data-tanah') ?>" class=""><i class="fa fa-bar-chart"></i> <span>Data Tanah</span></a>
                         </li>
                         <li>
@@ -42,7 +42,7 @@
                         </li>
                         <li>
                             <a href="<?= base_url('kepala-bagian/data-bobot') ?>" class=""><i class="fa fa-book"></i> <span>Data Bobot</span></a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="<?= base_url('kepala-bagian/hasil') ?>" class=""><i class="fa fa-list"></i> <span>Data Ranking Tanah</span></a>
                         </li>

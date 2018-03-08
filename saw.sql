@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2018 at 07:10 PM
+-- Generation Time: Mar 08, 2018 at 10:14 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -151,16 +151,26 @@ INSERT INTO `nilai_sifat_tanah` (`id_nilai`, `id_kriteria`, `id_bobot`, `kode_la
 (8, 8, 39, '12345', 3),
 (9, 9, 41, '12345', 3),
 (10, 10, 46, '12345', 3),
-(11, 1, 3, '12311', 6),
-(12, 2, 7, '12311', 6),
-(13, 3, 15, '12311', 6),
-(14, 4, 16, '12311', 6),
-(15, 5, 25, '12311', 6),
-(16, 6, 30, '12311', 6),
-(17, 7, 33, '12311', 6),
-(18, 8, 39, '12311', 6),
-(19, 9, 42, '12311', 6),
-(20, 10, 46, '12311', 6);
+(21, 1, 5, '2323', 8),
+(22, 2, 8, '2323', 23),
+(23, 3, 15, '2323', 23),
+(24, 4, 18, '2323', 23),
+(25, 5, 25, '2323', 23),
+(26, 6, 30, '2323', 23),
+(27, 7, 35, '2323', 23),
+(28, 8, 40, '2323', 23),
+(29, 9, 43, '2323', 23),
+(30, 10, 48, '2323', 23),
+(31, 1, 4, 'dshfsd', 7),
+(32, 2, 6, 'dshfsd', 3),
+(33, 3, 15, 'dshfsd', 4),
+(34, 4, 16, 'dshfsd', 4),
+(35, 5, 25, 'dshfsd', 4),
+(36, 6, 30, 'dshfsd', 4),
+(37, 7, 32, 'dshfsd', 4),
+(38, 8, 39, 'dshfsd', 4),
+(39, 9, 41, 'dshfsd', 4),
+(40, 10, 46, 'dshfsd', 4);
 
 -- --------------------------------------------------------
 
@@ -180,8 +190,9 @@ CREATE TABLE `sifat_kimia_tanah` (
 --
 
 INSERT INTO `sifat_kimia_tanah` (`kode_lab`, `kode_sampel`, `nama_tanaman`, `tahun_tanaman`) VALUES
-('12311', 'aaa(2012)', 'aaa', '2012'),
-('12345', 'tanaman2(2014)', 'tanaman2', '2014');
+('12345', 'tanaman2(2014)', 'tanaman2', '2014'),
+('2323', '2323(23)', '2323', '23'),
+('dshfsd', 'jkdfhsd(21312)', 'jkdfhsd', '2131');
 
 -- --------------------------------------------------------
 
@@ -203,7 +214,9 @@ CREATE TABLE `tb_login` (
 INSERT INTO `tb_login` (`kode_login`, `nama_user`, `pass_user`, `hak_akses`) VALUES
 (1, 'fairuz', '985fabf8f96dc1c4c306341031569937', 'kabagian'),
 (2, 'riri', '985fabf8f96dc1c4c306341031569937', 'staff'),
-(3, 'admin', '985fabf8f96dc1c4c306341031569937', 'admin');
+(3, 'admin', '985fabf8f96dc1c4c306341031569937', 'admin'),
+(5, 'azhary', '985fabf8f96dc1c4c306341031569937', 'eksternal'),
+(6, 'az', '985fabf8f96dc1c4c306341031569937', 'eksternal');
 
 --
 -- Indexes for dumped tables
@@ -263,13 +276,13 @@ ALTER TABLE `kriteria`
 -- AUTO_INCREMENT for table `nilai_sifat_tanah`
 --
 ALTER TABLE `nilai_sifat_tanah`
-  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `tb_login`
 --
 ALTER TABLE `tb_login`
-  MODIFY `kode_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kode_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

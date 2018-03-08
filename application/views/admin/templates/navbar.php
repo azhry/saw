@@ -35,6 +35,9 @@
                         <!-- <li><a href="<?= base_url('admin/hasil_uji_daun') ?>" class=""><i class="fa fa-bar-chart"></i> <span>Data Daun</span></a></li> -->
                         <li><a href="<?= base_url('admin/data-tanah') ?>" class=""><i class="fa fa-list"></i> <span>Data Tanah</span></a></li></li>
                         <li><a href="<?= base_url('admin/kriteria') ?>" class=""><i class="fa fa-book"></i> <span>Data Kriteria</span></a></li></li>
+                        <li>
+                            <a href="<?= base_url('admin/data-bobot') ?>" class=""><i class="fa fa-book"></i> <span>Data Bobot</span></a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

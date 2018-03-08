@@ -40,7 +40,16 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <center>
+                            <img src="<?= base_url( 'assets/logo.png' ) ?>" class="img img-responsive" style="width: 40%;">
+                            <h2 class="form-signin-heading">
+                                <font face="Comic Sans MS" color="Black">
+                                    <center>
+                                        Sistem Pendukung Keputusan Penentuan Kesuburan Tanah Perkebunan Kelapa Sawit
+                                    </center>
+                                </font>
+                            </h2>
+                        </center>
                     </div>
                     <div class="panel-body">
                         <?= $this->session->flashdata( 'msg' ) ?>

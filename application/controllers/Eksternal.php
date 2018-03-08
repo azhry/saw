@@ -68,6 +68,16 @@ class Eksternal extends MY_Controller {
                         'nilai'         => $nilai
                     ]);
                 }
+                // else
+                // {
+                //     $bobot = $this->bobot_m->get_row(['id_kriteria' => $id_kriteria]);
+                //     $this->nilai_sifat_tanah_m->insert([
+                //         'id_kriteria'   => $id_kriteria,
+                //         'id_bobot'      => $bobot->id_bobot,
+                //         'kode_lab'      => $kode_lab,
+                //         'nilai'         => 0
+                //     ]);
+                // }
             }
 
             $this->flashmsg('Data tanah berhasil disimpan');

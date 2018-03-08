@@ -27,7 +27,9 @@ class Saw_m extends MY_Model
 
 	public function crisping($id_kriteria, $bobot)
 	{
-		return $bobot / $this->get_threshold($id_kriteria)->nilai_max;
+		$denominator = $this->get_threshold($id_kriteria)->nilai_max;
+		if ( $denominator <= 0 ) return 0;
+		return $bobot / $denominator;
 	}
 
 	public function get_nilai($cond = '')

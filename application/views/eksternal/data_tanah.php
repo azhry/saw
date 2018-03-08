@@ -60,7 +60,7 @@
                                                         <td><?= $bobot ?></td>
                                                     <?php endforeach; ?>
                                                     <td>
-                                                        <div class="btn-group">
+                                                        <!-- <div class="btn-group">
                                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                                             Aksi <span class="caret"></span></button>
                                                             <ul class="dropdown-menu" role="menu">
@@ -68,7 +68,7 @@
                                                               <li><a href="<?= base_url('kepala-bagian') ?>"><i class="fa fa-eye"></i> Detail</a></li>
                                                               <li><a href="" onclick="delete_data_tanah('<?= $row['data']->kode_lab ?>')"><i class="fa fa-trash"></i> Hapus </a></li>
                                                             </ul>
-                                                        </div>
+                                                        </div> -->
                                                     </td>        
                                                 </tr>
                                             <?php endforeach; ?>

@@ -113,8 +113,9 @@
                                         <?php  
                                             $bobot = $this->bobot_m->get(['id_kriteria' => $row->id_kriteria]);
                                         ?>
-
-                                        <input type="number" class="form-control" name="label_value[]" step="0.01" min="<?= $bobot[0]->min_range ?>" max="<?= $bobot[count($bobot) - 1]->max_range ?>" required>
+<!-- 
+                                        min="<?= $bobot[0]->min_range ?>" max="<?= $bobot[count($bobot) - 1]->max_range ?>" -->
+                                        <input type="number" class="form-control" name="label_value[]" step="0.01" required>
                                         <input type="hidden" name="label_id[]" value="<?= $row->id_kriteria ?>">
                                     </div>    
                                 <?php endforeach; ?>
@@ -159,8 +160,9 @@
                                         <?php  
                                             $bobot = $this->bobot_m->get(['id_kriteria' => $row->id_kriteria]);
                                         ?>
-
-                                        <input type="number" id="edit_<?= $row->id_kriteria ?>" class="form-control" name="label_value[]" step="0.01" min="<?= $bobot[0]->min_range ?>" max="<?= $bobot[count($bobot) - 1]->max_range ?>" required>
+<!-- 
+                                        min="<?= $bobot[0]->min_range ?>" max="<?= $bobot[count($bobot) - 1]->max_range ?>" -->
+                                        <input type="number" id="edit_<?= $row->id_kriteria ?>" class="form-control" name="label_value[]" step="0.01" required>
                                         <input type="hidden" name="label_id[]" value="<?= $row->id_kriteria ?>">
                                         <input type="hidden" name="nilai_<?= $row->id_kriteria ?>" id="nilai_<?= $row->id_kriteria ?>">
                                     </div>    
